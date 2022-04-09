@@ -3,7 +3,7 @@ import { signOut } from 'firebase/auth';
 import { auth, provider } from './Firebase';
 import { signInWithPopup } from 'firebase/auth';
 import Moneyhood from './images/MoneyHood.svg'
-
+import GoogleButton from 'react-google-button'
 function Login(props) {
     const HandleClicked=()=>{
         signInWithPopup(auth, provider).then((res)=>{
@@ -26,10 +26,8 @@ function Login(props) {
                         <img src={Moneyhood} style={{ height: '150px', width: '150px', marginTop: '65px' }} />
                     </div>
                 </div>
-                <div className="buttons" style={{marginTop:'300px'}}>
-                    <button onClick={HandleClicked}>
-                        Sign In with Google
-                    </button>
+                <div className="buttons" style={{marginTop:'300px', marginLeft:'500px'}}>
+                    <GoogleButton onClick={HandleClicked}/>
                 </div>
             </div>
         </div>
