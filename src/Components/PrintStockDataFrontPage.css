@@ -1,0 +1,20 @@
+.price{
+    color: white;
+    flex: 0.5; 
+    text-align-last: right;
+    padding-right: 10px;
+}
+.name{
+    height: 70px;
+    color: white;
+    flex: 0.5;
+    padding-left: 10px;
+}
+.flex{
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.d-flex{
+    justify-content: end;
+    /* justify-content: space-between; */
+}

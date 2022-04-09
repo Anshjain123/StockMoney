@@ -1,0 +1,12 @@
+.card{
+    width: fit-content;
+    height: max-content;
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin: 20px;
+}
+.card-title{
+    color: white;
+    font-weight: bolder;
+}

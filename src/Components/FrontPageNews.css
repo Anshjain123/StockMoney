@@ -1,0 +1,12 @@
+.front_page_container {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 620px;
+  margin-left: 10px;
+  /* border: 5px solid white; */
+  background-color: transparent;
+  /* background-color: white; */
+}
+.front_page_container::-webkit-scrollbar {
+    display: none;
+}

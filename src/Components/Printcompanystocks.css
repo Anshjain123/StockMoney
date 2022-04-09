@@ -1,0 +1,12 @@
+
+.flex{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+/* .contaier{
+    justify-content: space-evenly;
+} */
+/* .contain:hover{
+    background-color: #222e35;
+} */
