@@ -7,16 +7,10 @@ import GoogleButton from 'react-google-button'
 function Login(props) {
     const HandleClicked=()=>{
         signInWithPopup(auth, provider).then((res)=>{
-        // //   console.log(res.user);
-        //   localStorage.setItem('data',res);
           props.setuserdata(res);
           props.setisLogged(true);
         })
       }
-    //   const signout=()=>{
-    //     signOut(auth)
-    //     .then(()=> console.log("signed out"))
-    //   }
     return (
         <div>
             <div className="container">

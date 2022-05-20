@@ -3,45 +3,35 @@ import './Printcompanystocks'
 function Printcompanystocks(props) {
     const ch = props.element.d; 
     return (
-        <div className="contain" style={{ marginLeft: '10px' }}>
-            <div className="flex" style={{ justifyContent: 'space-between', fontSize:'20px' }}>
+        <table className="contain" >
+            <tr className="flex" style={{fontSize:'20px' }}>
                 
-                <div className="pricc" style = {{flex:'0.3'}}>
+                <th className="pricc" style = {{width:'200px',display:'flex', justifyContent:'center'}}>
                     {props.element.realname}
-                </div>
-                <div className="naam" style = {{flex:'0.3'}}>
+                </th>
+                <th className="naam" style = {{width:'300px',display:'flex', justifyContent:'center'}}>
                     {props.element.name}
 
-                </div>
+                </th>
 
-                <div className="changes"style = {{flex:'0.3', color:(props.element.d >= 0 ? 'green' :'red')}}>
+                <th className="changes"style = {{color:(props.element.d >= 0 ? 'green' :'red'), width:'300px',display:'flex', justifyContent:'center'}}>
                     {(props.element.d >= 0 ? '+'+props.element.d:props.element.d)}
                     {/* {props.element.d} */}
-                </div>
+                </th>
 
 
-                <div className="percentchange" style = {{flex:'0.3',color:(props.element.dp > 0 ? 'green' :'red')}}>
+                <th className="percentchange" style = {{width:'300px' , color:(props.element.dp > 0 ? 'green' :'red'),display:'flex', justifyContent:'center'}}>
                 {(props.element.dp > 0 ? '+'+props.element.dp:props.element.dp)} %
-                </div>
+                </th>
 
 
-                {/* <div className="changes">
-                    {props.element.d}
-                </div> */}
-
-                <div className="prices" >
+                <th className="prices" style = {{width:'300px',display:'flex', justifyContent:'center'}} >
                     $ {props.element.c}
-                </div>
+                </th>
 
-                
+            </tr>
 
-
-
-                {/* {props.element.d}
-                {props.element.dp} */}
-            </div>
-
-        </div>
+        </table>
     )
 }
 

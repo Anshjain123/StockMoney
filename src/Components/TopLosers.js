@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react'
 import PrintTopLosers from './PrintTopLosers'
 import './TopLosers.css'
 function TopLosers() {
+    const apikey = process.env.REACT_APP_FINANCE_PREP; 
     const [toplosersdata, settoplosersdata] = useState([])
     // const fetchdata = useCallback(async () => {
         // let data = await fetch("https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=a6e448a8a8976cc4495760e37cf6e61a")
@@ -14,11 +15,11 @@ function TopLosers() {
     // }, [])
     useEffect(async () => {
         // fetchdata();         
-        let data = await fetch("https://financialmodelingprep.com/api/v3/stock_market/losers?apikey=a6e448a8a8976cc4495760e37cf6e61a")
+        let data = await fetch(`https://financialmodelingprep.com/api/v3/stock_market/losers?apikey=${apikey}`)
         let res = await data.json()
         settoplosersdata(res)
     }, [])
-    console.log(toplosersdata) 
+    // console.log(toplosersdata) 
     return (
         <div>
             <div className='toplosers_data_container'>

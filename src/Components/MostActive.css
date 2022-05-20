@@ -1,7 +1,7 @@
 .mostactive_data_container{
     padding-top: 25px;
     width: 1400px;
-    height: 600px;
+    height: 400px;
     /* border: 1px solid red; */
     
     margin-left: 50px;
@@ -16,11 +16,9 @@
     width: 1400px;
     height: 400px;
     border-radius: 15px;
-    border: 1px solid white;
-    overflow-y: scroll;
-
+    /* /* border: 1px solid white; */
+    overflow-y:auto; 
 }
-
 .mostactivedata::-webkit-scrollbar {
     display: none;
 }

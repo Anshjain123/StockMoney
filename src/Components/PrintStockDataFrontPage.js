@@ -9,19 +9,24 @@ function PrintStockDataFrontPage(props) {
 
         <div className="flex">
             <div className="name">
-                <b><h5>{props.element.name}</h5></b>
+                <b><h5>{props.element.realname}</h5></b>
+                <div className="tickername">
+                    ({props.element.name})
+                </div>
+
+
             </div>
             <div className="price">
                 <div className="real_price">
-                <b><h5>$ {props.element.c}</h5></b>
+                    <b><h5>$ {props.element.c}</h5></b>
                 </div>
                 <div className="change">
-                    <div className="d-flex">                    
-                    <b><h5 style={{color: (diff>=0 ? 'green' : 'red'), fontSize:'15px'}}> {diff>=0&&'+'}{props.element.d}</h5></b>
-                    <b><h5 style={{color: (diff>=0 ? 'green' : 'red'), fontSize:'15px'}}>({diff>=0&&'+'}{props.element.dp}%)</h5></b>
+                    <div className="d-flex">
+                        <b><h5 style={{ color: (diff >= 0 ? 'green' : 'red'), fontSize: '15px' }}> {diff >= 0 && '+'}{props.element.d}</h5></b>
+                        <b><h5 style={{ color: (diff >= 0 ? 'green' : 'red'), fontSize: '15px' }}>({diff >= 0 && '+'}{props.element.dp}%)</h5></b>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     )

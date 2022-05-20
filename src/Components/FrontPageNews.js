@@ -2,18 +2,18 @@ import { React, useState, useEffect } from 'react'
 import './FrontPageNews.css'
 import PrintFrontPageNews from './PrintFrontPageNews'
 import { useLocation } from 'react-router-dom'; 
-function FrontPageNews(props) {
-    // const location = useLocation();  
+function FrontPageNews(props) {  
     const [CryptoData, setCryptoData] = useState([]);
     let flag = false; 
-    // console.log(props.category)
+    const apikey1 = process.env.REACT_APP_FINNHUB_API_KEY;
+    const apikey2 = process.env.REACT_APP_NEWS_API
     let url; 
     if(props.category === 'general' || props.category === 'forex' || props.category === 'crypto') {
-        url = `https://finnhub.io/api/v1/news?category=${props.category}&token=c8odtciad3iatn99hsh0`;
+        url = `https://finnhub.io/api/v1/news?category=${props.category}&token=${apikey1}`;
         flag = true; 
         
     } else {
-        url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=08e8c4fc692c4277a73760b3bbceedba`;
+        url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=${apikey2}`;
         
     }
     useEffect(() => {

@@ -24,48 +24,50 @@ import TopLosers from './Components/TopLosers';
 import MostActive from './Components/MostActive';
 import AboutUs from './Components/AboutUs';
 function App() {
-  const [isLogged, setisLogged] = useState(false); 
+  const [isLogged, setisLogged] = useState(false);
   const [category, setcategory] = useState('general');
   const [userdata, setuserdata] = useState();
-  const HandleClicked=()=>{
-    signInWithPopup(auth, provider).then((res)=>{
+  const HandleClicked = () => {
+    signInWithPopup(auth, provider).then((res) => {
       console.log(res);
     })
   }
-  const signout=()=>{
+  // const apikey = process.env.REACT_APP_NEWS_API;
+  // console.log(apikey)
+  const signout = () => {
     signOut(auth)
-    .then(()=> console.log("signed out"))
+      .then(() => console.log("signed out"))
   }
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user)=>{
-      if(user){
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
         // console.log(user)
         setuserdata(user);
         // console.log(userdata) 
         setisLogged(true);
-      } 
+      }
     })
   }, [])
   return (
-    <>  
+    <>
 
-    {(userdata != undefined && isLogged ?<BrowserRouter>
-        
-        <Navbar setcategory = {setcategory} isLogged = {isLogged} setisLogged = {setisLogged} userdata = {userdata} setuserdata = {setuserdata}/>
-        
+      {(userdata != undefined && isLogged ? <BrowserRouter>
+
+        <Navbar setcategory={setcategory} isLogged={isLogged} setisLogged={setisLogged} userdata={userdata} setuserdata={setuserdata} />
+
         <Routes>
-          <Route exact path = '/' element = {<Home category = {category}/>}/>
-          <Route exact path = '/companydata' element = {<CompanyData/>}/>
-          <Route exact path = '/cryptodata' element = {<CryptoData/>}/>
-          <Route exact path = '/topgainers' element = {<Topgainers/>}/>
-          <Route exact path = '/toplosers' element = {<TopLosers/>}/>
-          <Route exact path = '/mostactive' element = {<MostActive/>}/>
-          <Route exact path='/aboutus' element = {<AboutUs/>}/>
+          <Route exact path='/' element={<Home category={category} />} />
+          <Route exact path='/companydata' element={<CompanyData />} />
+          <Route exact path='/cryptodata' element={<CryptoData />} />
+          <Route exact path='/topgainers' element={<Topgainers />} />
+          <Route exact path='/toplosers' element={<TopLosers />} />
+          <Route exact path='/mostactive' element={<MostActive />} />
+          <Route exact path='/aboutus' element={<AboutUs />} />
         </Routes>
-        </BrowserRouter>:<Login setisLogged = {setisLogged} setuserdata = {setuserdata}/>)}
-        
+      </BrowserRouter> : <Login setisLogged={setisLogged} setuserdata={setuserdata} />)}
 
-        {/* <button onClick={HandleClicked}>
+
+      {/* <button onClick={HandleClicked}>
           Sign in 
         </button>
         <button onClick={signout}>

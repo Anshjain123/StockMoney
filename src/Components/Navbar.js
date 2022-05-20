@@ -51,7 +51,7 @@ function Navbar(props) {
                                 </div>
                             </li>
                             <li className="nav-item me-1 my-1">
-                                <Link className="nav-link active" style={{ color: "white" }} aria-current="page" to='/'><b>Home</b></Link>
+                                <Link className="nav-link active" style={{ color: "white" }} aria-current="page" to='/'>Home</Link>
                             </li>
                             <li className="nav-item3 dropdown has-megamenu mx-1">
                                 {/* <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,7 +80,7 @@ function Navbar(props) {
                                 <Link className="nav-link active" style={{ color: "white" }}  to='/Market'><b>Market</b></Link>
                             </li> */}
                             <li className="nav-item me-2 my-1">
-                                <a className="nav-link" style={{ color: "white" }} onClick = {()=>navigate('./aboutus')} href="#"><b>About Us</b></a>
+                                <a className="nav-link" style={{ color: "white" }} onClick = {()=>navigate('./aboutus')} href="#">About Us</a>
                             </li>
                             <div className="d-flex">
                                 
@@ -90,8 +90,8 @@ function Navbar(props) {
                                         <b>Me</b>
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                        <li><a className="dropdown-item" href="#"><b>Account</b></a></li>
-                                        <li><a className="dropdown-item my-4" href="#"><b>Settings</b></a></li>
+                                        {/* <li><a className="dropdown-item" href="#"><b>Account</b></a></li>
+                                        <li><a className="dropdown-item my-4" href="#"><b>Settings</b></a></li> */}
                                         <li><a className="dropdown-item" onClick={handlesignout} href="#"><b>Logout</b></a></li>
                                     </ul>
                                 </div>

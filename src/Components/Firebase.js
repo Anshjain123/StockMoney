@@ -5,8 +5,9 @@ import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth"
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+const apikey = process.env.REACT_APP_FIREBASE_API_KEY
 const firebaseConfig = {
-  apiKey: "AIzaSyCDhPrkVg6_qHd4FoLvfv1d31hlaY9Q6Ic",
+  apiKey: `${apikey}`,
   authDomain: "sign-in-d9f8c.firebaseapp.com",
   projectId: "sign-in-d9f8c",
   storageBucket: "sign-in-d9f8c.appspot.com",
