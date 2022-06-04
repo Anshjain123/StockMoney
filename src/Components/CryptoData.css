@@ -1,16 +1,14 @@
 .crypto_data_container{
-    padding-top: 25px;
-    width: 1400px;
+    padding: 30px;
     height: 600px;
     
-    margin-left: 50px;
 }
 .flex{
     display: flex;
 }
 .cryptodata{
     background-image: linear-gradient(black, rgb(0, 0, 0));
-    width: 1400px;
+    width: 1470px;
     height: 500px;
     border-radius: 15px;
     font-weight: bolder;

@@ -37,12 +37,6 @@ function CryptoData() {
     <div>
 
       {(Data.data !== undefined && <div className='crypto_data_container'>
-        {/* <div className="search_bar">
-          <div className="flex" >
-            <input className="form-control me-2" onChange={handleChanged} type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success" onClick={handleClicked} type="submit">Search</button>
-          </div>
-        </div> */}
         <div className="head" >
           <div id="name">
             Name
@@ -66,12 +60,11 @@ function CryptoData() {
           <div className="cryptodata" >
 
             {Data.data.map((element, index) => {
-              return <div key={index} className="rrow">
+              return <div key={index} className="rrow" style = {{width:'1470px'}}>
                 <PrintCryptoData element={element} />
               </div>
             })}
 
-            Data
           </div>
         </div>)}
       </div>
