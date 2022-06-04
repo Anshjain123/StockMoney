@@ -4,6 +4,7 @@ import logo from './images/MoneyHood.svg'
 import userphoto from './images/profile.jpg'
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
+import toast, {Toaster} from 'react-hot-toast'
 function Navbar(props) {
     const navigate = useNavigate(); 
     const Logoutclicked = async ()=>{
@@ -13,6 +14,7 @@ function Navbar(props) {
     }
     return (
         <div>
+            <Toaster/>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <a className="navbar-brand" style={{ color: "white" }} href="#"><b>StockMoney</b> <img src={logo} width={25} /></a>
@@ -22,7 +24,7 @@ function Navbar(props) {
                     <div className="d-flex" id="navbarSupportedContent">
         
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item2 dropdown has-megamenu mx-2">
+                            <li className="nav-item2 dropdown has-megamenu mx-2" style = {{alignSelf:'center'}}>
                        
                                 <div className="d-flex">
 
@@ -43,10 +45,10 @@ function Navbar(props) {
                                     </div>
                                 </div>
                             </li>
-                            <li className="nav-item me-1 my-1">
+                            <li className="nav-item me-1 my-1" style={{alignSelf:'center'}}>
                                 <Link className="nav-link active" style={{ color: "white" }} aria-current="page" to='/home'>Home</Link>
                             </li>
-                            <li className="nav-item3 dropdown has-megamenu mx-1">
+                            <li className="nav-item3 dropdown has-megamenu mx-1" style={{alignSelf:'center'}}>
                                 
                                 <div className="d-flex">
 
@@ -66,10 +68,10 @@ function Navbar(props) {
                                 </div>
                             </li>
  
-                            <li className="nav-item me-2 my-1">
+                            <li className="nav-item me-2 my-1" style={{alignSelf:'center'}}>
                                 <a className="nav-link" style={{ color: "white" }} onClick = {()=>navigate('./home/aboutus')} href="#">About Us</a>
                             </li>
-                            <div className="d-flex">
+                            <div className="d-flex" style={{alignSelf:'center'}}>
                                 
                                 <div className="dropdown dropstart open">
                                     <button type="button" className="btn dropdown-toggle" style={{ color: 'white', boxShadow: 'none', marginTop:'0px' }} data-bs-toggle="dropdown" aria-expanded="false">

@@ -1,5 +1,5 @@
 .card{
-    width: fit-content;
+    width: auto;
     height: max-content;
     background-color: transparent;
     color: black;
@@ -9,4 +9,7 @@
 .card-title{
     color: black;
     font-weight: bolder;
+}
+.card-body{
+    width: 750px;
 }
