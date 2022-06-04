@@ -1,32 +1,30 @@
 .navbar{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight:bold;
+    background: blueviolet;
 }
 .navbar-brand{
     color: white;
 }
 .navbar-nav{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .navbar-brand{
-    font-family: Arial, Helvetica, sans-serif
-}
-.dropdown-item{ 
-    color: green;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .dropdown-menu{
-    background-color:  transparent;
-    /* border-radius: 25px; */
+    background-color:  white;
+    border-radius: 15px;
+    height: auto;
 }
 .dropdown-item:hover{
   
-    background-color: green;
-    border-radius: 25px;
-    /* width: fit-content; */
+    background-color: #8f3bde;
+    border-radius: 10px;
 }
 .dropdown-item{
-    border-radius: 25px;
-    background-color: white;
+    border-radius: 15px;
+    color: black;
 }
 .button{
     background-color: black;
@@ -34,30 +32,20 @@
 .form-control{
     width: 300px;
     border-radius: 100px;
-  
 }
 .search{
     border-color: green;
     border-radius: 25px;
 }
-  /* #5AC53B */
+ 
 .nav-item:hover{
-    background-color:green;
+    background-color:#670bbd;
     border-radius: 25px;
     height: fit-content;
 }
 .dropdown{
     background-color: transparent;
 }
-.btn{
-    background-color: transparent;
-    
-}
 .nav-link{
     color:white;
 }
-/* .btn:hover{
-    background-color:green;
-    border-radius: 25px;
-    height: fit-content;
-} */

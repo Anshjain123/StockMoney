@@ -1,10 +1,10 @@
 import React from 'react'
 import FrontPageNews from './FrontPageNews'
 import Stats from './Stats'
-
 function Home(props) {
     // console.log("DEBUG")
     return (
+        <>
         <div>
             <div className='app__container'>
                 <div className="flex">
@@ -19,6 +19,7 @@ function Home(props) {
 
             </div>
         </div>
+        </>
     )
 }
 

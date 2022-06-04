@@ -14,20 +14,20 @@ function MostActive() {
         <div>
             <div className='mostactive_data_container'>
                 <h1 style={{ color: 'white', fontSize: '50px' }}>Most Active</h1>
-                <div className="flex" style={{height:'50px',display:'flex', justifyContent:'space-between'}}>
-                    <div className="nm" style = { {color:'white', fontSize:'25px', fontWeight:'bold'} } >
+                <div className="flex" style={{height:'50px',display:'flex', justifyContent:'space-between', fontFamily:'Georgia'}}>
+                    <div className="nm" style = { {fontSize:'25px', fontWeight:'bold'} } >
                         Name
                     </div>
-                    <div className="symb" style = { {color:'white', fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="symb" style = { {fontSize:'25px', fontWeight:'bold'} }>
                         Symbol
                     </div>
-                    <div className="chn" style = { {color:'white', fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="chn" style = { {fontSize:'25px', fontWeight:'bold'} }>
                         Change
                     </div>
-                    <div className="percentcnh" style = { {color:'white', fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="percentcnh" style = { {fontSize:'25px', fontWeight:'bold'} }>
                         % Change
                     </div>
-                    <div className="pr" style = { {color:'white', fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="pr" style = { { fontSize:'25px', fontWeight:'bold'} }>
                         Price
                     </div>
                 </div>

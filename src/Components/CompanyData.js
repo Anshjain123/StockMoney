@@ -3,7 +3,7 @@ import './CompanyData.css'
 import Printcompanystocks from './Printcompanystocks';
 function CompanyData() {
     const [q, setq] = useState("");
-    const apikey = process.env.REACT_APP_FINNHUB_API_KEY; 
+    const apikey = process.env.REACT_APP_FINNHUB_API_KEY;
     const defaultdata = [
         "AAPL",
         "MSFT",
@@ -15,18 +15,16 @@ function CompanyData() {
         "GOOGL",
         'AMZN',
         'TSLA',
-        'BRK-A', 
         'FB',
         'TSM',
-        'JNJ',
         'UNH',
         'V',
-        'NVDA', 
-        'TCEHY', 
+        'NVDA',
+        'TCEHY',
         'XOM',
-        'JPM', 
+        'JPM',
         'PG',
-        'WMT', 
+        'WMT',
         'MA',
     ])
     let realname = [
@@ -35,12 +33,10 @@ function CompanyData() {
         "Google",
         "Amazon",
         "Tesla",
-        "Berkshire-Hathaway",
         "Meta (Facebook)",
         "TSMC",
-        "Johnson & Johnson",
         "UnitedHealth",
-        "Visa", 
+        "Visa",
         "NVIDIA",
         "Tencent",
         "Exxon Mobil",
@@ -53,7 +49,7 @@ function CompanyData() {
     const [StockData, setStockData] = useState([]);
     let arrData = []
     const fetchData = async (stock) => {
-        console.log("YEAH");
+       
         const url = `https://finnhub.io/api/v1/quote?symbol=${stock}&token=${apikey}`;
         const response = await fetch(url);
         // console.log(response);
@@ -90,27 +86,27 @@ function CompanyData() {
         <div className='company_data_container'>
             <div className="search_bar">
                 <div className="flex" style={{ display: 'flex' }} >
-                    <input className="form-control me-2" type="search" value={q} onChange={(e) => setq(e.target.value)} placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success" onClick={handleClicked} type="submit">Search</button>
+                    <input className="form-control me-2" type="search" style = {{marginTop:'5px', height:'40px', width:'800px', borderRadius:'20px'}} value={q} onChange={(e) => setq(e.target.value)} placeholder="Search" aria-label="Search" />
+                    <button className="btn btn-outline-primary" onClick={handleClicked} style = {{marginTop:'5px', height:'40px'}} type="submit">Search</button>
                 </div>
 
             </div>
             <table className="heading_bar">
-                <tr style={{display:'flex', color: 'white', fontSize: '22px', fontWeight: 'bold' }} >
-                    <th className="company_name" style = {{width:'200px',display:'flex', justifyContent:'center'}} >
+                <tr style={{ display: 'flex', fontSize: '22px', fontWeight: 'bold', fontFamily:'Georgia' }} >
+                    <th className="company_name" style={{ width: '200px', display: 'flex', justifyContent: 'center' }} >
                         Company
                     </th>
-                    <th className="ticker_symbol" style = {{width:'300px',display:'flex', justifyContent:'center'}}>
+                    <th className="ticker_symbol" style={{ width: '300px', display: 'flex', justifyContent: 'center' }}>
                         Symbol
                     </th>
-                    <th className="chang" style = {{width:'300px',display:'flex', justifyContent:'center'}}>
+                    <th className="chang" style={{ width: '300px', display: 'flex', justifyContent: 'center' }}>
                         Change
                     </th>
-                    <th className="percntchng" style = {{width:'300px',display:'flex', justifyContent:'center'}}>
+                    <th className="percntchng" style={{ width: '300px', display: 'flex', justifyContent: 'center' }}>
                         % Change
                     </th>
 
-                    <th className="pricee" style = {{width:'300px',display:'flex', justifyContent:'center'}}>
+                    <th className="pricee" style={{ width: '300px', display: 'flex', justifyContent: 'center' }}>
                         Current Price
                     </th>
 

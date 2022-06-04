@@ -3,9 +3,8 @@
   scroll-behavior: smooth;
   height: 620px;
   margin-left: 10px;
-  /* border: 5px solid white; */
   background-color: transparent;
-  /* background-color: white; */
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .front_page_container::-webkit-scrollbar {
     display: none;

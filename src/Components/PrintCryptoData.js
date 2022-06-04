@@ -4,7 +4,7 @@ function PrintCryptoData(props) {
   // console.log(props.element.metrics.market_data.ohlcv_last_1_hour)
   const x = props.element.metrics.market_data.ohlcv_last_1_hour;
   return (
-    <table className='crypto' style = {{marginTop:'30px', width:'1550px', fontSize:'20px'}}>
+    <table className='crypto'>
       <tr id="head" style = {{color:'white'}} >
         <th id="name" style={{width:'300px', paddingLeft:'15px'}}>
           {props.element.name}

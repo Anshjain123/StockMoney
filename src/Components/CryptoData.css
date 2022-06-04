@@ -2,7 +2,6 @@
     padding-top: 25px;
     width: 1400px;
     height: 600px;
-    /* border: 1px solid red; */
     
     margin-left: 50px;
 }
@@ -10,13 +9,11 @@
     display: flex;
 }
 .cryptodata{
-    background-image: linear-gradient(#222e35, rgb(0, 0, 0));
+    background-image: linear-gradient(black, rgb(0, 0, 0));
     width: 1400px;
     height: 500px;
     border-radius: 15px;
-    /* border: 1px solid white; */
     font-weight: bolder;
-    /* margin-top: 50px; */
     overflow-y: scroll;
 
 }
@@ -26,13 +23,13 @@
 .head{
     width: 1400px;
     height: 50px;
-    /* border: 1px solid white; */
     border-radius: 25px;
     display: flex;
     flex-direction: row;
     font-weight: bolder;
     justify-content: space-between;
-    color:white;
+    color:black;
+    font-family:'Georgia';
     font-size: 27px;
 }
 #name{

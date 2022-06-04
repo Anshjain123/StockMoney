@@ -6,75 +6,138 @@ import Stats from './Components/Stats';
 import { signOut } from 'firebase/auth';
 import { auth, provider } from './Components/Firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import Zoom from 'react-reveal/Zoom';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   BrowserRouter,
+  useNavigate
 } from "react-router-dom";
 import Home from './Components/Home';
 import Market from './Components/Market';
 import CompanyData from './Components/CompanyData';
 import { signInWithPopup } from 'firebase/auth';
-import Login from './Components/Login';
+import LandinPage from './Components/LandingPage';
 import { async } from '@firebase/util';
 import CryptoData from './Components/CryptoData';
 import Topgainers from './Components/Topgainers';
 import TopLosers from './Components/TopLosers';
 import MostActive from './Components/MostActive';
 import AboutUs from './Components/AboutUs';
+import Login from './Login';
+import Signup from './Signup';
 function App() {
-  const [isLogged, setisLogged] = useState(false);
+  // const [isLogged, setisLogged] = useState(false);
   const [category, setcategory] = useState('general');
-  const [userdata, setuserdata] = useState();
-  const HandleClicked = () => {
-    signInWithPopup(auth, provider).then((res) => {
-      console.log(res);
-    })
-  }
+  const navigate = useNavigate(); 
+  // const [userdata, setuserdata] = useState();
+  // const HandleClicked = () => {
+  //   signInWithPopup(auth, provider).then((res) => {
+  //     console.log(res);
+  //   })
+  // }
   // const apikey = process.env.REACT_APP_NEWS_API;
   // console.log(apikey)
-  const signout = () => {
-    signOut(auth)
-      .then(() => console.log("signed out"))
-  }
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // console.log(user)
-        setuserdata(user);
-        // console.log(userdata) 
-        setisLogged(true);
-      }
-    })
+  // const signout = () => {
+  //   signOut(auth)
+  //     .then(() => console.log("signed out"))
+  // }
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // console.log(user)
+  //       setuserdata(user);
+  //       // console.log(userdata) 
+  //       setisLogged(true);
+  //     }
+  //   })
+  // }, [])
+  const [islogged, setislogged] = useState(false);
+  const [user, setuser] = useState(null); 
+  useEffect(async() => {
+    // console.log("Yeh")
+     const token = localStorage.getItem("token"); 
+     if(token){
+       const response = await fetch("http://localhost:5000/api/auth/getuser", {
+         method:"GET",
+         headers:{
+          'Content-Type': 'application/json',
+          'Authorization': token 
+         }
+       })
+       const res = await response.json(); 
+       if(res != null) {
+         setislogged(true); 
+         navigate("/home"); 
+       }
+     }
+     
   }, [])
   return (
     <>
 
-      {(userdata != undefined && isLogged ? <BrowserRouter>
-
-        <Navbar setcategory={setcategory} isLogged={isLogged} setisLogged={setisLogged} userdata={userdata} setuserdata={setuserdata} />
-
-        <Routes>
-          <Route exact path='/' element={<Home category={category} />} />
-          <Route exact path='/companydata' element={<CompanyData />} />
-          <Route exact path='/cryptodata' element={<CryptoData />} />
-          <Route exact path='/topgainers' element={<Topgainers />} />
-          <Route exact path='/toplosers' element={<TopLosers />} />
-          <Route exact path='/mostactive' element={<MostActive />} />
-          <Route exact path='/aboutus' element={<AboutUs />} />
-        </Routes>
-      </BrowserRouter> : <Login setisLogged={setisLogged} setuserdata={setuserdata} />)}
-
-
-      {/* <button onClick={HandleClicked}>
-          Sign in 
-        </button>
-        <button onClick={signout}>
-          Sign Out
-        </button> */}
+      {islogged && <Navbar setislogged={setislogged} setcategory = {setcategory} />}
+      <Routes>
+        {!islogged && <Route exact path="/" element={<LandinPage setislogged={setislogged} />} />   }
+        {!islogged && <Route exact path="/login" element={<Login setislogged={setislogged} />} />}
+        {!islogged && <Route exact path="/signup" element={<Signup setislogged={setislogged} />} />}
+        {islogged && <Route exact path='/home' element={<Home category={category} />} />   }
+        {islogged && <Route exact path='/home/companydata' element={<CompanyData />} />}
+        {islogged && <Route exact path='/home/cryptodata' element={<CryptoData />} />}
+        {islogged && <Route exact path='/home/topgainers' element={<Topgainers />} />}
+        {islogged && <Route exact path='/home/toplosers' element={<TopLosers />} />}
+        {islogged && <Route exact path='/home/mostactive' element={<MostActive />} />}
+        {islogged && <Route exact path='/home/aboutus' element={<AboutUs />} />}
+      </Routes>
+    
     </>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// {(userdata != undefined && isLogged ? <BrowserRouter>
+
+//   <Navbar setcategory={setcategory} isLogged={isLogged} setisLogged={setisLogged} userdata={userdata} setuserdata={setuserdata} />
+
+//   <Routes>
+//     <Route exact path='/' element={<Home category={category} />} />
+//     <Route exact path='/companydata' element={<CompanyData />} />
+//     <Route exact path='/cryptodata' element={<CryptoData />} />
+//     <Route exact path='/topgainers' element={<Topgainers />} />
+//     <Route exact path='/toplosers' element={<TopLosers />} />
+//     <Route exact path='/mostactive' element={<MostActive />} />
+//     <Route exact path='/aboutus' element={<AboutUs />} />
+//   </Routes>
+// </BrowserRouter> : <Login setisLogged={setisLogged} setuserdata={setuserdata} />)}
