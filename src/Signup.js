@@ -18,7 +18,6 @@ function Signup({ setislogged }) {
             body: JSON.stringify({ username: username, password: password })
         })
         const res = await response.json();
-        console.log(res);
         if (res.authtoken === null) {
             toast.error("Pls try again to register!")
             navigate("/signup");
@@ -26,6 +25,7 @@ function Signup({ setislogged }) {
             toast.success("Successfully Registered!")
 
             localStorage.setItem("token", res.authtoken);
+            localStorage.setItem("user", username);
             console.log(localStorage.getItem("token"));
 
             setislogged(true);

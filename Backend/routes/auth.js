@@ -31,19 +31,11 @@ router.post("/register", async (req, res) => {
                     }
                 }
                 const authtoken = jwt.sign(data, JWT_SECRET);
-                res.send({ authtoken });
+                res.send({ authtoken:authtoken, user:newuser.username });
             }
         }
     })
 })
-// router.get("/logout", (req, res) => {
-//     req.logout((err) => {
-//         if (err) {
-//             res.sendStatus(401);
-//         }
-//     })
-//     res.sendStatus(200);
-// })
 router.post("/login", async (req, res) => {
     User.findOne({ username: req.body.username }, async (err, found) => {
         if (err) {
@@ -65,7 +57,9 @@ router.post("/login", async (req, res) => {
                         }
                     }
                     const authtoken = jwt.sign(data, JWT_SECRET);
-                    res.send({authtoken:authtoken});
+                     
+                    res.send({authtoken:authtoken, user:found.username});
+                    
                 }
             }
         }

@@ -27,70 +27,50 @@ import MostActive from './Components/MostActive';
 import AboutUs from './Components/AboutUs';
 import Login from './Login';
 import Signup from './Signup';
+import StockState from "./Context/stocks/StockState"
 function App() {
-  // const [isLogged, setisLogged] = useState(false);
   const [category, setcategory] = useState('general');
-  const navigate = useNavigate(); 
-  // const [userdata, setuserdata] = useState();
-  // const HandleClicked = () => {
-  //   signInWithPopup(auth, provider).then((res) => {
-  //     console.log(res);
-  //   })
-  // }
-  // const apikey = process.env.REACT_APP_NEWS_API;
-  // console.log(apikey)
-  // const signout = () => {
-  //   signOut(auth)
-  //     .then(() => console.log("signed out"))
-  // }
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       // console.log(user)
-  //       setuserdata(user);
-  //       // console.log(userdata) 
-  //       setisLogged(true);
-  //     }
-  //   })
-  // }, [])
+  const navigate = useNavigate();
+
   const [islogged, setislogged] = useState(false);
-  const [user, setuser] = useState(null); 
-  useEffect(async() => {
-    // console.log("Yeh")
-     const token = localStorage.getItem("token"); 
-     if(token){
-       const response = await fetch("http://localhost:5000/api/auth/getuser", {
-         method:"GET",
-         headers:{
+  const [user, setuser] = useState(null);
+  useEffect(async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const response = await fetch("http://localhost:5000/api/auth/getuser", {
+        method: "GET",
+        headers: {
           'Content-Type': 'application/json',
-          'Authorization': token 
-         }
-       })
-       const res = await response.json(); 
-       if(res != null) {
-         setislogged(true); 
-         navigate("/home"); 
-       }
-     }
-     
+          'Authorization': token
+        }
+      })
+      const res = await response.json();
+      
+      if (res != null) {
+        localStorage.setItem("user", res.user); 
+        setislogged(true);
+        navigate("/home");
+      }
+    }
+
   }, [])
   return (
     <>
-
-      {islogged && <Navbar setislogged={setislogged} setcategory = {setcategory} />}
-      <Routes>
-        {!islogged && <Route exact path="/" element={<LandinPage setislogged={setislogged} />} />   }
-        {!islogged && <Route exact path="/login" element={<Login setislogged={setislogged} />} />}
-        {!islogged && <Route exact path="/signup" element={<Signup setislogged={setislogged} />} />}
-        {islogged && <Route exact path='/home' element={<Home category={category} />} />   }
-        {islogged && <Route exact path='/home/companydata' element={<CompanyData />} />}
-        {islogged && <Route exact path='/home/cryptodata' element={<CryptoData />} />}
-        {islogged && <Route exact path='/home/topgainers' element={<Topgainers />} />}
-        {islogged && <Route exact path='/home/toplosers' element={<TopLosers />} />}
-        {islogged && <Route exact path='/home/mostactive' element={<MostActive />} />}
-        {islogged && <Route exact path='/home/aboutus' element={<AboutUs />} />}
-      </Routes>
-    
+      <StockState>
+        {islogged && <Navbar setislogged={setislogged} setcategory={setcategory} />}
+        <Routes>
+          {!islogged && <Route exact path="/" element={<LandinPage setislogged={setislogged} />} />}
+          {!islogged && <Route exact path="/login" element={<Login setislogged={setislogged} />} />}
+          {!islogged && <Route exact path="/signup" element={<Signup setislogged={setislogged} />} />}
+          {islogged && <Route exact path='/home' element={<Home category={category} />} />}
+          {islogged && <Route exact path='/home/companydata' element={<CompanyData />} />}
+          {islogged && <Route exact path='/home/cryptodata' element={<CryptoData />} />}
+          {islogged && <Route exact path='/home/topgainers' element={<Topgainers />} />}
+          {islogged && <Route exact path='/home/toplosers' element={<TopLosers />} />}
+          {islogged && <Route exact path='/home/mostactive' element={<MostActive />} />}
+          {islogged && <Route exact path='/home/aboutus' element={<AboutUs />} />}
+        </Routes>
+      </StockState>
     </>
   );
 }

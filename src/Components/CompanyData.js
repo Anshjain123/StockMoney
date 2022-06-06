@@ -92,6 +92,7 @@ function CompanyData() {
 
             </div>
             <table className="heading_bar">
+                <tbody>
                 <tr style={{ display: 'flex', fontSize: '22px', fontWeight: 'bold', fontFamily:'Georgia' }} >
                     <th className="company_name" style={{ width: '200px', display: 'flex', justifyContent: 'center' }} >
                         Company
@@ -111,7 +112,7 @@ function CompanyData() {
                     </th>
 
                 </tr>
-
+                </tbody>
             </table>
             <div className="data">
                 {StockData.map((element, index) => {

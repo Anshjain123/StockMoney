@@ -8,36 +8,36 @@ function Stats() {
     const [StockData, setStockData] = useState([]);
     const apikey = process.env.REACT_APP_FINNHUB_API_KEY;
     let arrData = []
-    const fetchData = async (stock) => {
-        const url = `https://finnhub.io/api/v1/quote?symbol=${stock}&token=${apikey}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    }
-    const getData = async () => {
+    // const url = 
+    
+    
+    useEffect(async () => {
+        let abortcontroller = new AbortController();
+        const signal = abortcontroller.signal;
         for (let i = 0; i < stockList.length; i++) {
-            const a = await fetchData(stockList[i]);
+            const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${stockList[i]}&token=${apikey}`, { signal: signal });
+            const a = await response.json();
             a.name = stockList[i];
-            a.realname = realname[i]; 
+            a.realname = realname[i];
             arrData.push(a);
         }
         setStockData(arrData);
-    }
-    useEffect(() => {
-        getData();
+        return () => {
+            abortcontroller.abort();
+        }
     }, [])
     return (
 
-            <div className = "container2">
-                <div className="heading">Companies Stocks</div>
-                <div className="stock__data">
-                    {StockData.map((element) => {
-                        return <div key = {`${element.name}`} className="row">
-                            <PrintStockDataFrontPage element={element} />
-                        </div>
-                    })}
-                </div>
+        <div className="container2">
+            <div className="heading">Companies Stocks</div>
+            <div className="stock__data">
+                {StockData.map((element) => {
+                    return <div key={`${element.name}`} className="row">
+                        <PrintStockDataFrontPage element={element} />
+                    </div>
+                })}
             </div>
+        </div>
 
     )
 }

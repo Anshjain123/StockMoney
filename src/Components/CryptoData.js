@@ -1,38 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './CryptoData.css'
 import PrintCryptoData from './PrintCryptoData'
-
+import StockContext from '../Context/stocks/StockContext'
 
 function CryptoData() {
+  const {getstocks} = useContext(StockContext); 
   const [query, setquery] = useState("");
-  const [Data, setdata] = useState([])
+  const [Data, setdata] = useState([]);
+  
   const url = "https://data.messari.io/api/v2/assets?fields=id,symbol,name,metrics/market_data&limit=500"
   useEffect(async () => {
-    let data = await fetch(url);
+    let abortcontroller = new AbortController(); 
+    let signal = abortcontroller.signal; 
+    let data = await fetch(url, {signal:signal});
     let res = await data.json();
     setdata(res)
-    // console.log(Data);
-    // console.log(res);
-    // console.log(res);s
+    getstocks();
+    return ()=>{
+      abortcontroller.abort();
+    } 
   }, [])
-  const handleChanged = (e) => {
-    setquery(e.target.value);
-  }
-  const handleClicked = () => {
-    console.log(query)
-    for (let i = 0; i < Data.data.length; i++) {
-      if (Data[i] !== null) {
-        console.log(Data[i].data.name, query)
-        if (Data[i].data.name === query) {
-          setdata(Data[i]);
-          break;
-        }
-      }
-
-
-    }
-    // console.log(Data)
-  }
+  
   return (
     <div>
 
@@ -57,18 +45,18 @@ function CryptoData() {
             Price
           </div>
         </div>
-          <div className="cryptodata" >
+        <div className="cryptodata" >
 
-            {Data.data.map((element, index) => {
-              return <div key={index} className="rrow" style = {{width:'1470px'}}>
-                <PrintCryptoData element={element} />
-              </div>
-            })}
+          {Data.data.map((element, index) => {
+            return <div key={index} className="rrow" style={{ width: '1470px' }}>
+              <PrintCryptoData element={element} />
+            </div>
+          })}
 
-          </div>
-        </div>)}
-      </div>
-      )
-      }
+        </div>
+      </div>)}
+    </div>
+  )
+}
 
-      export default CryptoData
+export default CryptoData

@@ -15,6 +15,7 @@ connectToMongo();
 app.set('view engine', 'ejs')
 
 app.use("/api/auth", require('./routes/auth'));
+app.use("/api/Stocks", require('./routes/Stocks')); 
 app.listen(5000, () => {
     console.log("Connected Successfully!")
 })

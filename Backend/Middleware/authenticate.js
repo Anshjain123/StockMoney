@@ -8,7 +8,6 @@ const authenticate = async(req, res, next)=>{
     }
     const data = jwt.verify(token, JWT_SECRET); 
     req.userid = data.user.id
-    // console.log(data.user.id);
     next();
 }
 

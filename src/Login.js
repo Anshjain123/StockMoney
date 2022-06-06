@@ -16,30 +16,16 @@ function Login(props) {
         })
 
         const res = await response.json();
-
         if (res.authtoken === null) {
             console.log("Pls try again to Login!!");
             navigate("/login");
         } else {
             localStorage.setItem("token", res.authtoken);
-            console.log(localStorage.getItem("token"));
+            localStorage.setItem("user", username);
             props.setislogged(true);
             navigate("/home");
         }
-        // const res = await response.json();
-        // if(res.user){
-        //     console.log("Yeha"); 
-        // }  else {
-        //     console.log("Pls try to login with correct credentials!!")
-        // }
-        // if (response.status === 200) {
-        //     props.setislogged(true);
-        //     navigate("/home");
-        // } else {
-        //     navigate("./login");
-        // }
-        // const json = await response.json();
-        // console.log(json); 
+
     }
 
     return (
