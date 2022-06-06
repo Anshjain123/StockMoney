@@ -1,0 +1,19 @@
+.Wishlist_wrapper{
+    width: 100%;
+    height: 100vh 
+    
+}
+.wishlistbox{
+    height: 550px; 
+    width: 90rem;
+    margin: 50px;
+}
+.header{
+    width: 90rem;
+    height: 50px;
+    border: 1px solid blueviolet;
+}
+.table{
+    height: 100%;
+    width: 100%;
+}

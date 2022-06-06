@@ -28,6 +28,7 @@ import AboutUs from './Components/AboutUs';
 import Login from './Login';
 import Signup from './Signup';
 import StockState from "./Context/stocks/StockState"
+import Wishlist from './Components/Wishlist';
 function App() {
   const [category, setcategory] = useState('general');
   const navigate = useNavigate();
@@ -69,6 +70,7 @@ function App() {
           {islogged && <Route exact path='/home/toplosers' element={<TopLosers />} />}
           {islogged && <Route exact path='/home/mostactive' element={<MostActive />} />}
           {islogged && <Route exact path='/home/aboutus' element={<AboutUs />} />}
+          {islogged && <Route exact path='/home/wishlist' element={<Wishlist/>} />}
         </Routes>
       </StockState>
     </>
