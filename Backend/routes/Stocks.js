@@ -10,10 +10,11 @@ router.post("/addstock", (req, res)=>{
             if(!found){
                 res.send({"Status":400});
             } else {
-                 
+                console.log("add");
                 found.stocks.push({type:req.body.type, symbol:req.body.symbol});
                 found.ispresent.push(req.body.symbol);
                 found.save(); 
+                res.send({"Status":200}); 
             }
         }
     }) 
@@ -50,9 +51,6 @@ router.post("/removestock", (req, res)=>{
                 res.send({"Status":401});
                 console.log("No such user exists!"); 
             } else {
-                // console.log(obj);
-                // console.log(found.stocks[10]);  
-                // console.log(typeof(obj), typeof(found.stocks[10]))
                 User.updateOne({username:username}, { $pull: { stocks: {type:req.body.type, symbol:req.body.symbol} } }, (err, data)=>{
                     if(err){
                         console.log(err); 
@@ -63,20 +61,12 @@ router.post("/removestock", (req, res)=>{
                         console.log(err); 
                     } 
                 });
+                res.send({"Status":200}) ;
 
             }
         }
     })
 })
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import StockContext from './StockContext'
+import toast, {Toaster} from 'react-hot-toast'; 
 const StockState = (props) => {
   const [Stocks, setStocks] = useState([])
   const addstock = async(type, symbol)=>{
@@ -12,6 +13,7 @@ const StockState = (props) => {
       }, 
       body: JSON.stringify({username:user, type:type, symbol:symbol})
     })
+    return true; 
   }
 
   const removestock = async(type, symbol)=>{
@@ -36,7 +38,8 @@ const StockState = (props) => {
       body: JSON.stringify({username:user})
     })
     const res = await response.json(); 
-    setStocks(res.AllStocks);   
+    setStocks(res.AllStocks);  
+    return res.AllStocks;  
   }
 
   

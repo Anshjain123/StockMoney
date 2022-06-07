@@ -11,9 +11,14 @@
 .header{
     width: 90rem;
     height: 50px;
-    border: 1px solid blueviolet;
 }
 .table{
     height: 100%;
     width: 100%;
+}
+.content{
+    overflow-y:scroll;
+}
+.content::-webkit-scrollbar {
+    display: none;
 }
