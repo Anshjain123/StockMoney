@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import StockContext from './StockContext'
 
 const StockState = (props) => {
+  const [Stocks, setstocks] = useState([])
   const addstock = async (type, symbol) => {
 
     const user = localStorage.getItem("user");
@@ -18,7 +19,7 @@ const StockState = (props) => {
   const removestock = async (type, symbol) => {
     const user = localStorage.getItem("user");
 
-    const response = await fetch("http://localhost:5000/api/Stocks/removestock", {
+    const response = await fetch("http://localhost:5000/api/Stocks/deleteStock", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -40,10 +41,19 @@ const StockState = (props) => {
         ...state,
         stocks: state.stocks.filter((symbol) => symbol != action.symbol)
       }
+    } else if (action.type === "getstocks") {
+      const dbstocks = action.items;
+      console.log(dbstocks);
+      if (dbstocks !== undefined) {
+        return {
+          ...state,
+          stocks: dbstocks
+        }
+      } else {
+        return state; 
+      }
+
     }
-  }
-  const initialState = {
-    stocks: []
   }
   const getstocks = async () => {
     const user = localStorage.getItem('user');
@@ -55,18 +65,15 @@ const StockState = (props) => {
       body: JSON.stringify({ username: user })
     })
     const res = await response.json();
-    // console.log(res);
-    initialState.stocks = res.AllStocks;  
-    return res.AllStocks;
+
+    return res.AllStocks
   }
-  
+  let initialState = {
+    stocks: [],
+  }
+
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [Stocks, setStocks] = useState([])
-
-
-
-
-
+  // console.log(state);
   return (
     <StockContext.Provider value={{ state, dispatch, getstocks }}>
       {props.children}

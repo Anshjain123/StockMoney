@@ -10,7 +10,7 @@ function CryptoData() {
   
   const url = "https://data.messari.io/api/v2/assets?fields=id,symbol,name,metrics/market_data&limit=100"
   useEffect(async () => {
-    await getstocks();
+    
     let abortcontroller = new AbortController(); 
     let signal = abortcontroller.signal; 
     let data = await fetch(url, {signal:signal});

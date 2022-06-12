@@ -38,7 +38,7 @@ router.post("/getallstocks", (req, res) => {
         }
     })
 })
-router.post("/removestock", (req, res) => {
+router.post("/deleteStock", (req, res) => {
     const username = req.body.username;
     let obj = {
         type: (req.body.type),
