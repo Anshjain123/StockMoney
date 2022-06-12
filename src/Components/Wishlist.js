@@ -4,10 +4,10 @@ import StockContext from '../Context/stocks/StockContext'
 import Wishlistitem from './Wishlistitem';
 import { width } from '@mui/system';
 function Wishlist() {
-    const { getstocks} = useContext(StockContext);  
+    const { state } = useContext(StockContext);  
     const [AllStocks, setAllStocks] = useState([])
+    const Stocks = state.stocks;
     useEffect(async ()=>{
-        const Stocks = await getstocks(); 
         let arr = []; 
         for(let i = 0; i < Stocks.length; i++) { 
             const response = await fetch(`https://data.messari.io/api/v1/assets/${Stocks[i]}/metrics`, );
@@ -16,7 +16,7 @@ function Wishlist() {
         }
         setAllStocks(arr); 
     },[])
-    console.log(AllStocks);
+    // console.log(AllStocks);
     return (
         <div className='Wishlist_wrapper'>
 

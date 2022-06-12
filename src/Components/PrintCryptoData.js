@@ -1,29 +1,44 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import StockContext from '../Context/stocks/StockContext';
 import './PrintCryptoData.css'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import Tooltip from '@mui/material/Tooltip';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import toast, {Toaster} from 'react-hot-toast'; 
+import toast, { Toaster } from 'react-hot-toast';
 function PrintCryptoData(props) {
-  const { addstock, Stocks, removestock } = useContext(StockContext);
+  const { state, dispatch, getstocks } = useContext(StockContext);
   const x = props.element.metrics.market_data.ohlcv_last_1_hour;
   const [saved, setsaved] = useState(false)
-  const handleadd = async() => {
-    
+  const Stocks = state.stocks;
+  const handleadd = async () => {
+
     setsaved(true);
-    const isadded = await addstock("crypto", props.element.symbol);
+    dispatch({
+      type: "addstock",
+      symboltype: "crypto",
+      symbol: props.element.symbol,
+    })
     toast.success("Added Successfully!")
-    
-    // console.log(Stocks.indexOf((props.element.symbol)));
   }
   const handleremove = async () => {
-    
+
     setsaved(false);
-    await removestock("crypto", props.element.symbol); 
-     
+    dispatch({
+      type: "removestock",
+      symboltype: "crypto",
+      symbol: props.element.symbol,
+    })
     toast.success("Successfully removed from your watchlist");
   }
+  // console.log(Stocks); 
+  // useEffect(() => {
+  //   async function get(){
+  //     if (Stocks.length === 0) {
+  //       await getstocks(); 
+  //     }
+  //   }
+  //   get(); 
+  // }, [])
   return (
     <>
 
@@ -51,8 +66,8 @@ function PrintCryptoData(props) {
                   $ {parseFloat(props.element.metrics.market_data.price_usd).toFixed(2)}
                   <div className="icon" style={{ paddingLeft: '20px' }}>
                     {/* <Tooltip title="Save" style={{ cursor: 'pointer' }} placement='top' arrow > */}
-                      {!saved && Stocks.indexOf((props.element.symbol)) === -1 ?<BookmarkBorderIcon onClick={handleadd} />: <BookmarkIcon style={{ color: 'white' }} onClick={handleremove} />}
-                      
+                    {Stocks.indexOf((props.element.symbol)) === -1 ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon style={{ color: 'white' }} onClick={handleremove} />}
+
                     {/* </Tooltip> */}
                   </div>
                 </div>

@@ -10,6 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 
 router.post("/register", async (req, res) => {
+    // console.log(req.body);
     User.findOne({ username: req.body.username }, async (err, found) => {
         if (err) {
             res.send({authtoken:null});
@@ -17,6 +18,7 @@ router.post("/register", async (req, res) => {
             if (found) {
                 res.json({authtoken:null});
             } else {
+                 
                 const salt = await bcrypt.genSalt(10);
                 const hash = await bcrypt.hash(req.body.password, salt);
 

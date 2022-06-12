@@ -1,4 +1,3 @@
-import { getRedirectResult } from 'firebase/auth';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Zoom } from 'react-reveal';

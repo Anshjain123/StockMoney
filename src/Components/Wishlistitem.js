@@ -3,19 +3,26 @@ import Tooltip from '@mui/material/Tooltip';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import toast, { Toaster } from 'react-hot-toast'
 import StockContext from '../Context/stocks/StockContext';
+import { useNavigate } from 'react-router-dom';
 const Wishlistitem = (props) => {
     const x = props.element.data.market_data.ohlcv_last_1_hour;
     const [saved, setsaved] = useState(true)
-    const { removestock } = useContext(StockContext);
+    const { state, dispatch } = useContext(StockContext);
+    const navigate = useNavigate(); 
     const handleremove = async () => {
-        setsaved(false);
-        await removestock("crypto", props.element.data.symbol);
+        // await removestock("crypto", props.element.data.symbol);
+        dispatch({
+            type: "removestock",
+            symboltype: "crypto",
+            symbol: props.element.symbol,
+        })
         toast.success("Succesfully removed from Wishlist!")
+        navigate("/home/wishlist")
     }
     return (
         <>
 
-            {saved && <table className='table'>
+            <table className='table'>
                 <tbody>
                     <tr>
                         <th style={{ fontFamily: "Georgia", fontSize: '18px', width: '234px', color: 'white' }}>
@@ -47,7 +54,7 @@ const Wishlistitem = (props) => {
                         </th>
                     </tr>
                 </tbody>
-            </table>}
+            </table>
         </>
     )
 }

@@ -80,7 +80,7 @@ function Navbar(props) {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuOffset">
 
-                                        <li><a className="dropdown-item" onClick={()=>navigate("./home/wishlist")} href="#"><b>Watch List</b></a></li>
+                                        <li><a className="dropdown-item" onClick={() => navigate("./home/wishlist")} href="#"><b>Watch List</b></a></li>
                                         <li><a className="dropdown-item" onClick={Logoutclicked} href="#"><b>Logout</b></a></li>
                                     </ul>
                                 </div>

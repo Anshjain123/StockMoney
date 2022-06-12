@@ -4,18 +4,19 @@ import PrintCryptoData from './PrintCryptoData'
 import StockContext from '../Context/stocks/StockContext'
 
 function CryptoData() {
-  const {getstocks} = useContext(StockContext); 
+  const {state, getstocks} = useContext(StockContext); 
   const [query, setquery] = useState("");
   const [Data, setdata] = useState([]);
   
   const url = "https://data.messari.io/api/v2/assets?fields=id,symbol,name,metrics/market_data&limit=100"
   useEffect(async () => {
+    await getstocks();
     let abortcontroller = new AbortController(); 
     let signal = abortcontroller.signal; 
     let data = await fetch(url, {signal:signal});
     let res = await data.json();
     setdata(res)
-    const Stocks = await getstocks();
+    // const Stocks = await getstocks();
     return ()=>{
       abortcontroller.abort();
     } 
