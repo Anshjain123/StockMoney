@@ -16,7 +16,7 @@ function Home(props) {
     return (
         <>
             <div>
-                <div className='app__container'>
+                <div className='app__container' style = {{height:'630px'}}>
                     <div className="flex">
                         <div className="Stats">
                             <Stats />

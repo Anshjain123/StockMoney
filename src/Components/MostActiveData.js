@@ -3,7 +3,7 @@ import './MostActiveData.css'
 function MostActiveData(props) {
   return (
     <div className = 'cont'>
-        <div className="flex" style = {{display:'flex', justifyContent:'space-between', color:'white',margin:'10px', fontWeight:'bold'}}>
+        <div className="flex" style = {{display:'flex', justifyContent:'space-between',margin:'10px', fontWeight:'bold'}}>
             <div className="companyname" style={{fontSize:'20px', flex:'0.3'}}>
                {props.element.name}
             </div>

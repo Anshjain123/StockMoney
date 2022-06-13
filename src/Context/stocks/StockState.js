@@ -30,6 +30,7 @@ const StockState = (props) => {
 
   const reducer = (state, action) => {
     if (action.type === "addstock") {
+      console.log(action.symboltype); 
       addstock(action.symboltype, action.symbol);
       return {
         ...state,

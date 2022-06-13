@@ -4,11 +4,12 @@
     margin-left: 50px;
 }
 .topgainersdata{
-    background-image: linear-gradient(black, rgb(0, 0, 0));
+    background-color: white;
     width: 1400px;
     height: 500px;
     border-radius: 15px;
     overflow-y: scroll;
+    box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);;
 }
 
 .topgainersdata::-webkit-scrollbar {

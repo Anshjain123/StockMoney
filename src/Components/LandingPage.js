@@ -1,32 +1,40 @@
-import React, { useState, } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signOut } from 'firebase/auth';
-import { auth, provider } from './Firebase';
-import { signInWithPopup } from 'firebase/auth';
-import Moneyhood from './images/MoneyHood.svg'
-import GoogleButton from 'react-google-button'
+import './LandingPage.css'
 import Zoom from 'react-reveal/Zoom';
-import Bounce from 'react-reveal/Bounce';
-
-function LandingPage() {
+import Login from '../Login';
+import Typist from 'react-typist';
+function LandingPage(props) {
     let navigate = useNavigate();
-
+    const [landing, setlanding] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setlanding(false);
+        }, 2400);
+    }, [])
     return (
+
         <>
             <Zoom>
-                <div style={{ backgroundColor: '#e9ecef', height: '450px' }}>
-                    <div style={{ width: '100%', height: '100%' }}>
-                        <div className="heading" style={{ width: '100%', height: '100%' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    {landing && <h1 className="Name" style={{ fontSize: '220px', textAlign: 'left', color: 'black',display:'flex', marginTop:'180px' }}>
+                        <Typist
+                            cursor={
+                                {
+                                    show: true,
+                                    blink: true,
 
-                            <h1 style={{ fontSize: '220px', textAlign: 'left', color: 'black' }}>StockMoney</h1>
-                            <div style={{ marginLeft: '-1300px' }}>
-                                <button type="button" onClick={() => navigate("./login")} className="btn btn-lg btn-primary" style={{ marginRight: '10px' }}>Login</button>
-                                <button type="button" onClick={() => navigate("./signup")} className="btn btn-lg btn-primary">Register</button>
-                            </div>
+                                }
+                            }
+                            startDelay={1500}
+                        >
+                            StockMoney
+                        </Typist>
+                    </h1>}
+                    <Zoom>
+                        {!landing && <Login setislogged={props.setislogged} />}
+                    </Zoom>
 
-                        </div>
-
-                    </div>
                 </div>
             </Zoom>
         </>

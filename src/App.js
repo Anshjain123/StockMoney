@@ -61,7 +61,7 @@ function App() {
         {islogged && <Navbar setislogged={setislogged} setcategory={setcategory} />}
         <Routes>
           {!islogged && <Route exact path="/" element={<LandinPage setislogged={setislogged} />} />}
-          {!islogged && <Route exact path="/login" element={<Login setislogged={setislogged} />} />}
+          {/* {!islogged && <Route exact path="/login" element={<Login setislogged={setislogged} />} />} */}
           {!islogged && <Route exact path="/signup" element={<Signup setislogged={setislogged} />} />}
           {islogged && <Route exact path='/home' element={<Home category={category} />} />}
           {islogged && <Route exact path='/home/companydata' element={<CompanyData />} />}

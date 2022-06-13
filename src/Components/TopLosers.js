@@ -12,7 +12,7 @@ function TopLosers() {
     return (
         <div>
             <div className='toplosers_data_container'>
-                <h1 style={{ color: 'white', fontSize: '50px' }}>Top Losers</h1>
+                <h1 style={{ fontSize: '50px', fontFamily:"Georgia" }}>Top Losers</h1>
                 <div className="flex" style={{height:'50px',display:'flex', justifyContent:'space-between', fontFamily:'Georgia'}}>
                     <div className="nm" style = { {fontSize:'25px', fontWeight:'bold'} } >
                         Name

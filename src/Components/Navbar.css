@@ -1,7 +1,7 @@
 .navbar{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight:bold;
-    background: blueviolet;
+    background: #131921;
 }
 .navbar-brand{
     color: white;
@@ -13,13 +13,13 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .dropdown-menu{
-    background-color:  white;
+    background-color:  #eaeded;
     border-radius: 15px;
     height: auto;
 }
 .dropdown-item:hover{
   
-    background-color: #8f3bde;
+    background-color: #d7dada;
     border-radius: 10px;
 }
 .dropdown-item{
@@ -33,13 +33,13 @@
     width: 300px;
     border-radius: 100px;
 }
-.search{
+/* .search{
     border-color: green;
     border-radius: 25px;
-}
+} */
  
 .nav-item:hover{
-    background-color:#670bbd;
+    background-color:#090b0f;
     border-radius: 25px;
     height: fit-content;
 }

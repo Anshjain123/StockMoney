@@ -13,7 +13,6 @@ function PrintCryptoData(props) {
   console.log("state", state); 
   const handleadd = async () => {
 
-    setsaved(true);
     dispatch({
       type: "addstock",
       symboltype: "crypto",
@@ -23,7 +22,6 @@ function PrintCryptoData(props) {
   }
   const handleremove = async () => {
 
-    setsaved(false);
     dispatch({
       type: "removestock",
       symboltype: "crypto",
@@ -37,7 +35,7 @@ function PrintCryptoData(props) {
 
       <table className='crypto' style={{ width: '100%' }}>
         <tbody>
-          <tr id="head" style={{ color: 'white' }} >
+          <tr id="head" style={{ color: 'black' }} >
             <th id="name" style={{ width: '300px', paddingLeft: '15px' }}>
               {props.element.name}
             </th>
@@ -59,7 +57,7 @@ function PrintCryptoData(props) {
                   $ {parseFloat(props.element.metrics.market_data.price_usd).toFixed(2)}
                   <div className="icon" style={{ paddingLeft: '20px' }}>
                     {/* <Tooltip title="Save" style={{ cursor: 'pointer' }} placement='top' arrow > */}
-                    {Stocks == undefined || Stocks.indexOf((props.element.symbol)) === -1 ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon style={{ color: 'white' }} onClick={handleremove} />}
+                    {Stocks == undefined || Stocks.indexOf((props.element.symbol)) === -1 ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon  onClick={handleremove} />}
 
                     {/* </Tooltip> */}
                   </div>

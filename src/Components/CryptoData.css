@@ -7,12 +7,13 @@
     display: flex;
 }
 .cryptodata{
-    background-image: linear-gradient(black, rgb(0, 0, 0));
+    background-color: white;
     width: 1470px;
     height: 500px;
     border-radius: 15px;
     font-weight: bolder;
     overflow-y: scroll;
+    box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);;
 
 }
 .cryptodata::-webkit-scrollbar {

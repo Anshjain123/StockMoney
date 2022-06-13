@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 function Signup({ setislogged }) {
     const navigate = useNavigate();
     const handlesubmit = async (e) => {
+        console.log("aaya")
         e.preventDefault();
         const username = e.target[0].value;
         const password = e.target[1].value;
@@ -38,58 +39,46 @@ function Signup({ setislogged }) {
         <div>
             <Zoom>
                 <Toaster />
-                <section className="vh-100" style={{ backgroundColor: '#eee' }}>
-                    <div className="container h-100">
+                <section className="vh-90" style={{ backgroundColor: "white" }}>
+                    <div className="container py-5 h-100">
                         <div className="row d-flex justify-content-center align-items-center h-100">
-                            <div className="col-lg-12 col-xl-11">``
-                                <div className="card text-black" style={{ borderRadius: '25px' }}>
-                                    <div className="card-body p-md-5">
-                                        <div className="row justify-content-center">
-                                            <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                            <div className="col col-xl-10">
+                                <div className="card" style={{ borderRadius: "1rem", boxShadow: "1px 1px 1px #919191, 1px 2px 1px #919191,1px 3px 1px #919191, 1px 4px 1px #919191,1px 5px 1px #919191,1px 6px 1px #919191,1px 7px 1px #919191,1px 8px 1px #919191,1px 9px 1px #919191,1px 10px 1px #919191,1px 18px 6px rgba(16, 16, 16, 0.4),1px 22px 10px rgba(16,16,16,0.2),1px 25px 35px rgba(16,16,16,0.2),1px 30px 60px rgba(16,16,16,0.4)" }}>
+                                    <div className="row g-0">
+                                        <div className="col-md-6 col-lg-5 d-none d-md-block">
+                                            <img src="https://thumbs.dreamstime.com/z/business-people-think-stock-market-investment-162014229.jpg"
+                                                alt="login form" className="img-fluid" style={{ borderRadius: "1rem 0 0 1rem", height: '100%' }} />
+                                        </div>
+                                        <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                                            <div className="card-body p-4 p-lg-5 text-black">
 
-                                                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign Up</p>
-
-                                                <form className="mx-1 mx-md-4" onSubmit={handlesubmit} >
-
-
-
-                                                    <div className="d-flex flex-row align-items-center mb-4">
-                                                        <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                        <div className="form-outline flex-fill mb-0">
-                                                            <input type="email" name="username" id="form3Example3c" className="form-control" />
-                                                            <label className="form-label" htmlFor="form3Example3c">Your Email</label>
-                                                        </div>
+                                                <form onSubmit={handlesubmit}>
+                                                    <Toaster/>
+                                                    <div className="logo" style={{ display: 'flex', alignItems: 'flex-start', paddingBottom: '10px' }}>
+                                                        <span className="h1 fw-bold mb-0">Register Here!</span>
                                                     </div>
 
-                                                    <div className="d-flex flex-row align-items-center mb-4">
-                                                        <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                                        <div className="form-outline flex-fill mb-0">
-                                                            <input type="password" name="password" id="form3Example4c" className="form-control" />
-                                                            <label className="form-label" htmlFor="form3Example4c">Password</label>
-                                                        </div>
+                                                    <h5 className="fw-normal mb-3 pb-3" style={{ paddingTop: '10px' }}>Sign Up your account it's free</h5>
+
+                                                    <div className="form-outline mb-4">
+                                                        <input type="email" id="form2Example17" className="form-control form-control-lg" name='username' />
+                                                        <label className="form-label" htmlFor="form2Example17">Email address</label>
+                                                    </div>
+
+                                                    <div className="form-outline mb-4">
+                                                        <input type="password" id="form2Example27" className="form-control form-control-lg" name='password' />
+                                                        <label className="form-label" htmlFor="form2Example27">Password</label>
+                                                    </div>
+
+                                                    <div className="pt-1 mb-4">
+                                                        <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
                                                     </div>
 
 
-
-                                                    <div className="form-check d-flex justify-content-center mb-5">
-                                                        <input className="form-check-input me-2" type="checkbox" value=""
-                                                            id="form2Example3c" />
-                                                        <label className="form-check-label" htmlFor="form2Example3">
-                                                            I agree all statements in <a href="#!">Terms of service</a>
-                                                        </label>
-                                                    </div>
-
-                                                    <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                        <button type="submit" className="btn btn-primary btn-lg" >Register</button>
-                                                    </div>
+                                                    <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>Already have an account? <a href="#!"
+                                                        style={{ color: "#393f81" }} onClick={() => navigate("/")}>Login</a></p>
 
                                                 </form>
-
-                                            </div>
-                                            <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                                                    className="img-fluid" alt="Sample image" />
 
                                             </div>
                                         </div>

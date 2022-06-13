@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import PrintTopGainers from './PrintTopGainers'
 import './Topgainers.css'
 function Topgainers() {
@@ -12,28 +12,28 @@ function Topgainers() {
     return (
         <div>
             <div className='topgainers_data_container'>
-                <h1 style={{ color: 'white', fontSize: '50px' }}>Top Gainers</h1>
-                <div className="flex" style={{height:'50px',display:'flex', justifyContent:'space-between'}}>
-                    <div className="nm" style = { { fontSize:'25px', fontWeight:'bold'} } >
+                <h1 style={{ fontSize: '50px', fontFamily:'Georgia' }}>Top Gainers</h1>
+                <div className="flex" style={{ height: '50px', display: 'flex', justifyContent: 'space-between' }}>
+                    <div className="nm" style={{ fontSize: '25px', fontWeight: 'bold' }} >
                         Name
                     </div>
-                    <div className="symb" style = { {fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="symb" style={{ fontSize: '25px', fontWeight: 'bold' }}>
                         Symbol
                     </div>
-                    <div className="chn" style = { { fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="chn" style={{ fontSize: '25px', fontWeight: 'bold' }}>
                         Change
                     </div>
-                    <div className="percentcnh" style = { { fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="percentcnh" style={{ fontSize: '25px', fontWeight: 'bold' }}>
                         % Change
                     </div>
-                    <div className="pr" style = { { fontSize:'25px', fontWeight:'bold'} }>
+                    <div className="pr" style={{ fontSize: '25px', fontWeight: 'bold' }}>
                         Price
                     </div>
                 </div>
                 <div className="topgainersdata">
-                    {topgainersdata && topgainersdata.map((element, index)=>{
-                        return <div key = {index} className="r" style = { {height:'70px'} }>
-                            <PrintTopGainers element = {element}/>
+                    {topgainersdata && topgainersdata.map((element, index) => {
+                        return <div key={index} className="r" style={{ height: '70px' }}>
+                            <PrintTopGainers element={element} />
                         </div>
                     })}
                 </div>

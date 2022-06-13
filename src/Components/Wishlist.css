@@ -18,6 +18,8 @@
 }
 .content{
     overflow-y:scroll;
+    background-color: white !important;
+    box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);;
 }
 .content::-webkit-scrollbar {
     display: none;

@@ -1,21 +1,22 @@
-.container2{
-    height: 600px;
-    width: 300px;
-    margin-top: 20px;
-    background-image: linear-gradient(black, black);
-    border-radius: 20px;
+.container2 {
+  height: 600px;
+  width: 300px;
+  margin-top: 20px;
+  background-color: #131921;
+  border-radius: 20px;
+  box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);
 }
-.heading{
-    height: 35px;
-    color: white;
-    font-weight: bolder;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
+.heading {
+  height: 35px;
+  color: white;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
 }
-.stock__data{
-    padding-top: 0px;
+.stock__data {
+  padding-top: 0px;
 }
-.rows{
-    height: 70px;
-    width: 100%;
+.rows {
+  height: 70px;
+  width: 100%;
 }
