@@ -1,51 +1,58 @@
-.navbar{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight:bold;
-    background: #131921;
+.navbar {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  background: #131921;
 }
-.navbar-brand{
-    color: white;
+.navbar-brand {
+  color: white;
 }
-.navbar-nav{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.navbar-nav {
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-.navbar-brand{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.navbar-brand {
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-.dropdown-menu{
-    background-color:  #eaeded;
-    border-radius: 15px;
-    height: auto;
+.dropdown-menu {
+  background-color: #eaeded;
+  border-radius: 15px;
+  height: auto;
 }
-.dropdown-item:hover{
-  
-    background-color: #d7dada;
-    border-radius: 10px;
+.dropdown-item:hover {
+  background-color: #d7dada;
+  border-radius: 10px;
+  box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);
 }
-.dropdown-item{
-    border-radius: 15px;
-    color: black;
+.dropdown-item {
+  border-radius: 15px;
+  color: black;
 }
-.button{
-    background-color: black;
+.button {
+  background-color: black;
 }
-.form-control{
-    width: 300px;
-    border-radius: 100px;
+.btn:hover {
+  background-color: #090b0f;
+  border-radius: 25px;
+  height: fit-content;
+  box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);
+}
+.form-control {
+  width: 300px;
+  border-radius: 100px;
 }
 /* .search{
     border-color: green;
     border-radius: 25px;
 } */
- 
-.nav-item:hover{
-    background-color:#090b0f;
-    border-radius: 25px;
-    height: fit-content;
+
+.nav-item:hover {
+  background-color: #090b0f;
+  border-radius: 25px;
+  height: fit-content;
+  box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);
 }
-.dropdown{
-    background-color: transparent;
+.dropdown {
+  background-color: transparent;
 }
-.nav-link{
-    color:white;
+.nav-link {
+  color: white;
 }
