@@ -2,9 +2,10 @@ import React, { useContext, useState, useEffect } from 'react'
 import './Wishlist.css'
 import StockContext from '../Context/stocks/StockContext'
 import Wishlistitem from './Wishlistitem';
-import { width } from '@mui/system';
+import FlipMove from 'react-flip-move';
+
 function Wishlist() {
-    const { state, getstocks,dispatch } = useContext(StockContext);
+    const { state, getstocks, dispatch } = useContext(StockContext);
     const [AllStocks, setAllStocks] = useState([])
     useEffect(async () => {
         let res = await getstocks();
@@ -21,7 +22,7 @@ function Wishlist() {
         }
         setAllStocks(arr);
     }, [])
-    const Stocks = state.stocks; 
+    const Stocks = state.stocks;
     // console.log(AllStocks);
     return (
         <div className='Wishlist_wrapper'>
@@ -54,11 +55,14 @@ function Wishlist() {
                     </table>
                 </div>
                 <div className="content" style={{ height: '90%', backgroundColor: 'black', borderRadius: '20px' }}>
-                    {AllStocks.map((element, index) => {
-                        return <div key={index} className='elements' style={{ height: '60px' }}>
-                            <Wishlistitem element={element} />
-                        </div>
-                    })}
+                    <FlipMove>
+                        {AllStocks.map((element, index) => {
+                            return <div key={index} className='elements' style={{ height: '60px' }}>
+                                <Wishlistitem element={element} AllStocks={AllStocks} setAllStocks={setAllStocks} />
+                            </div>
+                        })}
+                    </FlipMove>
+
 
                 </div>
             </div>

@@ -11,13 +11,15 @@ const Wishlistitem = (props) => {
     const navigate = useNavigate(); 
     const handleremove = async () => {
         // await removestock("crypto", props.element.data.symbol);
+        let filteredArray = props.AllStocks.filter(item => item.data.symbol !== props.element.data.symbol); 
+        props.setAllStocks(filteredArray); 
         dispatch({
             type: "removestock",
             symboltype: "crypto",
             symbol: props.element.data.symbol,
         })         
         toast.success("Succesfully removed from Wishlist!")
-        navigate("/home/cryptodata"); 
+        // navigate("/home/cryptodata"); 
     }
     return (
         <>
