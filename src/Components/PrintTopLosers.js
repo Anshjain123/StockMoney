@@ -1,27 +1,30 @@
 import React from 'react'
 import './PrintTopLosers.css'
 function PrintTopLosers(props) {
-  return (
-    <div className = 'cont'>
-        <div className="flex" style = {{display:'flex', justifyContent:'space-between',margin:'10px', fontWeight:'bold'}}>
-            <div className="companyname" style={{fontSize:'20px', flex:'0.3'}}>
-               {props.element.name}
-            </div>
-            <div className="symb" style={{fontSize:'20px', flex:'0.3'}}>
-                {props.element.symbol}
-            </div>
-            <div className="chn" style={{fontSize:'20px', flex:'0.3', color: 'red'}}>
-                {props.element.change}
-            </div>
-            <div className="percntchng" style={{fontSize:'20px', flex:'0.3', color:'red'}}>
-                {props.element.changesPercentage} %
-            </div>
-            <div className="p" style={{fontSize:'20px', marginRight:'10px'}}>
-               $ {props.element.price}
-            </div>
-        </div>
-    </div>
-  )
+    return (
+        <table style={{ width: '100%' }}>
+            <tbody>
+                <tr style={{ display: 'flex', justifyContent: 'space-around', margin: '10px', fontWeight: 'bold' }}>
+                    <th style={{ fontSize: '20px', flex: 0.15 }}>
+                        {props.element.name}
+                    </th>
+                    <th style={{ fontSize: '20px', flex: 0.1 }}>
+                        {props.element.symbol}
+                    </th>
+                    <th style={{ fontSize: '20px', color: 'red', flex: 0.1 }}>
+                        {props.element.change}
+                    </th>
+                    <th style={{ fontSize: '20px', color: 'red', flex: 0.1 }}>
+                        {props.element.changesPercentage} %
+                    </th>
+                    <th style={{ fontSize: '20px', flex: 0.1 }}>
+                        $ {props.element.price}
+                    </th>
+                </tr>
+            </tbody>
+
+        </table>
+    )
 }
 
 export default PrintTopLosers

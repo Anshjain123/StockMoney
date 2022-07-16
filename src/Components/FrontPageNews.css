@@ -1,11 +1,10 @@
 .front_page_container {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
   scroll-behavior: smooth;
   height: 610px;
   margin: 10px;
   background-color: transparent;
   font-family: Georgia, "Times New Roman", Times, serif;
-  box-shadow:  1px 20px 60px rgba(16, 16, 16, 0.4);
 }
 .front_page_container::-webkit-scrollbar {
   display: none;

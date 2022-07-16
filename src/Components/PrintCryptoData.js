@@ -9,8 +9,7 @@ function PrintCryptoData(props) {
   const { state, dispatch, getstocks } = useContext(StockContext);
   const x = props.element.metrics.market_data.ohlcv_last_1_hour;
   const [saved, setsaved] = useState(false)
-  const Stocks = state.stocks;
-  console.log("state", state); 
+  const Stocks = state.cryptoStocks;
   const handleadd = async () => {
 
     dispatch({
@@ -35,34 +34,30 @@ function PrintCryptoData(props) {
 
       <table className='crypto' style={{ width: '100%' }}>
         <tbody>
-          <tr id="head" style={{ color: 'black' }} >
-            <th id="name" style={{ width: '300px', paddingLeft: '15px' }}>
+          <tr id="head" style={{ display: 'flex', justifyContent: 'space-around', height: '100%', alignItems: 'center' }} >
+            <th id="name" style={{ flex: 0.1, alignItems: 'flex-start' }}>
               {props.element.name}
             </th>
-            <th id="symbol" style={{ width: '250px', textAlign: 'start', marginLeft: '100px' }}>
+            <th id="symbol" style={{ flex: 0.1, alignItems: 'flex-start' }}>
               {props.element.symbol}
             </th>
-            <th id="low" style={{ width: '230px', textAlign: 'start' }}>
+            <th id="low" style={{ flex: 0.1, alignItems: 'flex-start' }} >
               $ {(x !== null ? parseFloat(x.low).toFixed(2) : 0)}
             </th>
-            <th id="high" style={{ width: '260px', textAlign: 'start' }} >
+            <th id="high" style={{ flex: 0.1, alignItems: 'flex-start' }} >
               $ {(x !== null ? parseFloat(x.high).toFixed(2) : 0)}
             </th>
-            <th id="percentchange" style={{ width: '100px', textAlign: 'center', color: (props.element.metrics.market_data.percent_change_eth_last_1_hour < 0 ? 'red' : 'green') }} >
+            <th id="percentchange" style={{ flex: 0.1, alignItems: 'flex-start', color: (props.element.metrics.market_data.percent_change_eth_last_1_hour < 0 ? 'red' : 'green') }} >
               {parseFloat(props.element.metrics.market_data.percent_change_eth_last_1_hour).toFixed(2)} %
             </th>
-            <th id="price" style={{ textAlign: 'end', paddingRight: '10px' }}>
-              <div className="both" >
-                <div className="PRICe" style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  $ {parseFloat(props.element.metrics.market_data.price_usd).toFixed(2)}
-                  <div className="icon" style={{ paddingLeft: '20px' }}>
-                    {/* <Tooltip title="Save" style={{ cursor: 'pointer' }} placement='top' arrow > */}
-                    {Stocks == undefined || Stocks.indexOf((props.element.symbol)) === -1 ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon  onClick={handleremove} />}
-
-                    {/* </Tooltip> */}
-                  </div>
-                </div>
+            <th style={{ flex: 0.11, alignItems: 'center', display:'flex' }}>
+              <div className="PRICe" style={{ flex: 0.8, textAlign: 'start' }}>
+                ${parseFloat(props.element.metrics.market_data.price_usd).toFixed(2)}
               </div>
+              <div className="icon" >
+                {Stocks == undefined || Stocks.indexOf((props.element.symbol)) === -1 ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon onClick={handleremove} />}
+              </div>
+
             </th>
           </tr>
         </tbody>

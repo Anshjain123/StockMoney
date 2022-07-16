@@ -8,11 +8,13 @@ const userschema = new Schema({
     password:{
         type:String, 
     },
-    stocks:{
+    companyStocks:{
         type:Array, 
-    }, 
-    ispresent:{
+        unique:true
+    },
+    cryptoStocks:{
         type:Array, 
+        unique:true
     }
 }) 
 

@@ -7,12 +7,13 @@ function Home(props) {
     const { state, getstocks, dispatch } = useContext(StockContext);
     useEffect(async () => {
         let res = await getstocks();
-        console.log(res, "YEah");
+        // console.log(res, "YEah");
         dispatch({
             type: "getstocks",
             items: res
         })
     }, [])
+    // console.log(state);
     return (
         <>
             <div>

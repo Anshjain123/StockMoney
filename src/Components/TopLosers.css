@@ -1,17 +1,21 @@
-.toplosers_data_container{
-    width: 1400px;
-    height: 600px;
-    margin-left: 50px;
+.toplosers_data_container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  flex:1
 }
-.toplosersdata{
-    background-color: white;
-    width: 1400px;
-    height: 500px;
-    border-radius: 15px;
-    overflow-y: scroll;
-    box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);;
+.toplosersdata {
+  background-color: white;
+  border-radius: 15px;
+  flex: 0.7;
+  overflow-y: scroll;
 }
-
+.Head {
+  display: "flex";
+  flex-direction: row;
+  justify-content: "space-around";
+  font-family: "Georgia";
+}
 .toplosersdata::-webkit-scrollbar {
-    display: none;
+  display: none;
 }

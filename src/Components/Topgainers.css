@@ -1,17 +1,18 @@
-.topgainers_data_container{
-    width: 1400px;
-    height: 600px;
-    margin-left: 50px;
+.topgainers_data_container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
-.topgainersdata{
-    background-color: white;
-    width: 1400px;
-    height: 500px;
-    border-radius: 15px;
-    overflow-y: scroll;
-    box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);;
+.topgainersdata {
+  background-color: white;
+  border-radius: 15px;
+  overflow-y: scroll;
+  flex: 0.7;
 }
-
+.head {
+  flex: 0.1;
+  display: "flex";
+}
 .topgainersdata::-webkit-scrollbar {
-    display: none;
+  display: none;
 }

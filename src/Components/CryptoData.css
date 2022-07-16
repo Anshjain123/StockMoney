@@ -1,32 +1,29 @@
 .crypto_data_container{
-    padding: 30px;
-    height: 600px;
-    
-}
-.flex{
     display: flex;
+    flex-direction: column;
+    padding: 30px;
 }
 .cryptodata{
-    background-color: white;
+    background-color: rgb(237, 233, 233);
     width: 1470px;
     height: 500px;
     border-radius: 15px;
     font-weight: bolder;
-    overflow-y: scroll;
-    box-shadow: 1px 20px 60px rgba(16, 16, 16, 0.4);;
-
+    overflow-y: scroll; 
 }
 .cryptodata::-webkit-scrollbar {
     display: none;
 }
+.rrow{
+    border-bottom: 1px solid lightgray;
+}
 .head{
-    width: 1400px;
-    height: 50px;
+    flex: 0.4;
     border-radius: 25px;
     display: flex;
     flex-direction: row;
     font-weight: bolder;
-    justify-content: space-between;
+    justify-content: space-around;
     color:black;
     font-family:'Georgia';
     font-size: 27px;

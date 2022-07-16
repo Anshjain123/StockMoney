@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import './FrontPageNews.css'
 import PrintFrontPageNews from './PrintFrontPageNews'
 import { useNavigate } from 'react-router-dom'; 
+import { Card } from '@mui/material';
 
 function FrontPageNews(props) {  
     const navigate = useNavigate(); 
@@ -38,7 +39,7 @@ function FrontPageNews(props) {
     }, [props.category])
     
     return (
-        <div className="front_page_container">
+        <Card className="front_page_container">
             <div className="row">
                 
                 {CryptoData.map((element, index) => {
@@ -49,7 +50,7 @@ function FrontPageNews(props) {
 
             </div>
 
-        </div>
+        </Card>
     )
 }
 

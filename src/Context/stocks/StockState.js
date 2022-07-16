@@ -5,7 +5,7 @@ import StockContext from './StockContext'
 const StockState = (props) => {
   const [Stocks, setstocks] = useState([])
   const addstock = async (type, symbol) => {
-
+    console.log("Ansh Jain")
     const user = localStorage.getItem("user");
     const response = await fetch("http://localhost:5000/api/Stocks/addstock", {
       method: "POST",
@@ -30,28 +30,42 @@ const StockState = (props) => {
 
   const reducer = (state, action) => {
     if (action.type === "addstock") {
-      console.log(action.symboltype); 
+      // console.log(action.symboltype);
       addstock(action.symboltype, action.symbol);
+      if (action.symboltype === "crypto") {
+        return {
+          ...state,
+          cryptoStocks: [...state.cryptoStocks, action.symbol]
+        }
+      }
       return {
         ...state,
-        stocks: [...state.stocks, action.symbol]
+        companyStocks: [...state.companyStocks, action.symbol]
       }
     } else if (action.type === "removestock") {
       removestock(action.symboltype, action.symbol);
-      return {
-        ...state,
-        stocks: state.stocks.filter((symbol) => symbol != action.symbol)
-      }
-    } else if (action.type === "getstocks") {
-      const dbstocks = action.items;
-      console.log(dbstocks);
-      if (dbstocks !== undefined) {
+      if (action.symboltype === "crypto") {
         return {
           ...state,
-          stocks: dbstocks
+          cryptoStocks: state.cryptoStocks.filter((symbol) => symbol != action.symbol)
+        }
+      }
+      return {
+        ...state,
+        companyStocks: state.companyStocks.filter((symbol) => symbol != action.symbol)
+      }
+    } else if (action.type === "getstocks") {
+      const company = action.items.companyStocks;
+      const crypto = action.items.cryptoStocks;
+      // console.log(dbstocks);
+      if (company !== undefined && crypto !== undefined) {
+        return {
+          ...state,
+          companyStocks: company,
+          cryptoStocks: crypto,
         }
       } else {
-        return state; 
+        return state;
       }
 
     }
@@ -66,11 +80,11 @@ const StockState = (props) => {
       body: JSON.stringify({ username: user })
     })
     const res = await response.json();
-
-    return res.AllStocks
+    return res;
   }
   let initialState = {
-    stocks: [],
+    companyStocks: [],
+    cryptoStocks: [],
   }
 
   const [state, dispatch] = useReducer(reducer, initialState);

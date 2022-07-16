@@ -1,27 +1,29 @@
 import React from 'react'
 import './PrintTopGainers.css'
 function PrintTopGainers(props) {
-  return (
-    <div className = 'cont'>
-        <div className="flex" style = {{display:'flex', justifyContent:'space-between',margin:'10px', fontWeight:'bold'}}>
-            <div className="companyname" style={{fontSize:'20px', flex:'0.3'}}>
-               {props.element.name}
-            </div>
-            <div className="symb" style={{fontSize:'20px', flex:'0.3'}}>
-                {props.element.symbol}
-            </div>
-            <div className="chn" style={{fontSize:'20px', flex:'0.3', color: 'green'}}>
-                +{props.element.change}
-            </div>
-            <div className="percntchng" style={{fontSize:'20px', flex:'0.3', color:'green'}}>
-                +{props.element.changesPercentage} %
-            </div>
-            <div className="p" style={{fontSize:'20px', marginRight:'10px'}}>
-               $ {props.element.price}
-            </div>
-        </div>
-    </div>
-  )
+    return (
+        <table className='top__gainers' style={{ width: '100%', height: '100%', fontSize: '18px', fontFamily:'Georgia' }}>
+            <tbody>
+                <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <th style={{ flex: 0.15, fontWeight:'bolder' }} >
+                        {props.element.name}
+                    </th>
+                    <th style={{ flex: 0.1 }}>
+                        {props.element.symbol}
+                    </th>
+                    <th style={{ flex: 0.1, color:'green' }}>
+                        +{props.element.change}
+                    </th>
+                    <th style={{ flex: 0.1, color:'green' }}>
+                        +{props.element.changesPercentage} %
+                    </th>
+                    <th style={{ flex: 0.09 }}>
+                        $ {props.element.price}
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    )
 }
 
 export default PrintTopGainers
