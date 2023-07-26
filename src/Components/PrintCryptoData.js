@@ -9,26 +9,43 @@ function PrintCryptoData(props) {
   const { state, dispatch, getstocks } = useContext(StockContext);
   const x = props.element.metrics.market_data.ohlcv_last_1_hour;
   const [saved, setsaved] = useState(false)
-  const Stocks = state.cryptoStocks;
+  
   const handleadd = async () => {
-
-    dispatch({
-      type: "addstock",
-      symboltype: "crypto",
-      symbol: props.element.symbol,
-    })
-    toast.success("Added Successfully!")
+    if(props.islogged) {
+      dispatch({
+        type: "addstock",
+        symboltype: "crypto",
+        symbol: props.element.symbol,
+      })
+      toast.success("Added Successfully!")
+    } else {
+      toast.error("Please login to add item in your wishlist!")
+    } 
+    
   }
   const handleremove = async () => {
-
-    dispatch({
-      type: "removestock",
-      symboltype: "crypto",
-      symbol: props.element.symbol,
-    })
-    toast.success("Successfully removed from your watchlist");
+    if(props.islogged) {
+      dispatch({
+        type: "removestock",
+        symboltype: "crypto",
+        symbol: props.element.symbol,
+      })
+      toast.success("Successfully removed from your watchlist");
+    } else {
+      toast.error("Please login to remove an item from your wishlist!")
+    }
+    
   }
 
+    useEffect(async ()=>{
+      let res = await getstocks();
+        dispatch({
+            type: "getstocks",
+            items: res
+        })
+    },[])
+
+    const Stocks = state.cryptoStocks;
   return (
     <>
 
@@ -55,7 +72,7 @@ function PrintCryptoData(props) {
                 ${parseFloat(props.element.metrics.market_data.price_usd).toFixed(2)}
               </div>
               <div className="icon" >
-                {Stocks == undefined || Stocks.indexOf((props.element.symbol)) === -1 ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon onClick={handleremove} />}
+                {Stocks == undefined || Stocks.indexOf((props.element.symbol)) === -1 || !props.islogged ? <BookmarkBorderIcon onClick={handleadd} /> : <BookmarkIcon onClick={handleremove} />}
               </div>
 
             </th>

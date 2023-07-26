@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './CompanyData.css'
 import Printcompanystocks from './Printcompanystocks';
 
-function CompanyData() {
+function CompanyData({ islogged }) {
     const [q, setq] = useState("");
     const apikey = process.env.REACT_APP_FINNHUB_API_KEY;
     const defaultdata = [
@@ -42,38 +42,38 @@ function CompanyData() {
         'MA',
     ])
     let realname = {
-        "AAPL":"Apple",
-        "MSFT":"Microsoft",
-        "GOOGL":"Google", 
-        "AMZN":"Amazon",
-        "TSLA":"Tesla",
-        "FB":"Meta (Facebook)",
-        "TSM":"TSMC",
-        "V":"Visa",
-        "NVDA":"NVIDIA",
-        "TCEHY":"Tencent",
-        "XOM":"Exxon Mobil",
-        "JPM":"JPMorgan Chase",
-        "PG":"Procter & Gamble",
-        "WMT":"Walmart",
-        "MA":"Mastercard"
+        "AAPL": "Apple",
+        "MSFT": "Microsoft",
+        "GOOGL": "Google",
+        "AMZN": "Amazon",
+        "TSLA": "Tesla",
+        "FB": "Meta (Facebook)",
+        "TSM": "TSMC",
+        "V": "Visa",
+        "NVDA": "NVIDIA",
+        "TCEHY": "Tencent",
+        "XOM": "Exxon Mobil",
+        "JPM": "JPMorgan Chase",
+        "PG": "Procter & Gamble",
+        "WMT": "Walmart",
+        "MA": "Mastercard"
     }
     let ticker = {
-        "apple":"AAPL",
-        "microsoft":"MSFT",
-        "google":"GOOGL", 
-        "amazon":"AMZN",
-        "tesla":"TSLA",
-        "facebook":"FB",
-        "TSMC":"TSM",
-        "visa":"V",
-        "nvidia":"NVDA",
-        "tencent":"TCEHY",
-        "exxon mobil":"XOM",
-        "jpmorgan chase":"JPM",
-        "procter & gamble":"PG",
-        "walmart":"WMT",
-        "mastercard":"MA"
+        "apple": "AAPL",
+        "microsoft": "MSFT",
+        "google": "GOOGL",
+        "amazon": "AMZN",
+        "tesla": "TSLA",
+        "facebook": "FB",
+        "TSMC": "TSM",
+        "visa": "V",
+        "nvidia": "NVDA",
+        "tencent": "TCEHY",
+        "exxon mobil": "XOM",
+        "jpmorgan chase": "JPM",
+        "procter & gamble": "PG",
+        "walmart": "WMT",
+        "mastercard": "MA"
     }
     const [StockData, setStockData] = useState([]);
     let arrData = []
@@ -93,7 +93,7 @@ function CompanyData() {
             const a = await fetchData(data[i]);
             // console.log();
             a.name = data[i];
-            a.realname = realname[data[i]]; 
+            a.realname = realname[data[i]];
             arrData.push(a);
 
         }
@@ -103,7 +103,7 @@ function CompanyData() {
     const handleClicked = async () => {
         let arr = [];
         q.toLowerCase();
-        console.log(q); 
+        console.log(q);
 
         arr.push(ticker[q]);
         setData(arr);
@@ -122,11 +122,11 @@ function CompanyData() {
             </div>
             <table className="heading_bar">
                 <tbody>
-                    <tr style={{ display: 'flex', fontSize: '22px', fontWeight: 'bold', fontFamily: 'Georgia', justifyContent:'space-around' }} >
-                        <th className="company_name" style={{  display: 'flex', justifyContent: 'center' }} >
+                    <tr style={{ display: 'flex', fontSize: '22px', fontWeight: 'bold', fontFamily: 'Georgia', justifyContent: 'space-around' }} >
+                        <th className="company_name" style={{ display: 'flex', justifyContent: 'center' }} >
                             Company
                         </th>
-                        <th className="ticker_symbol" style={{  display: 'flex', justifyContent: 'center' }}>
+                        <th className="ticker_symbol" style={{ display: 'flex', justifyContent: 'center' }}>
                             Symbol
                         </th>
                         <th className="chang" style={{ display: 'flex', justifyContent: 'center' }}>
@@ -146,7 +146,7 @@ function CompanyData() {
             <div className="data">
                 {StockData.map((element, index) => {
                     return <div key={index} className="rows" style={{ height: '70px' }}>
-                        <Printcompanystocks element={element} />
+                        <Printcompanystocks islogged = {islogged} element={element} />
                     </div>
                 })}
             </div>

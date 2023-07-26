@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../Models/user');
+const authenticate = require("../Middleware/authenticate")
 
-router.post("/addstock", async (req, res) => {
-    User.findOne({ username: req.body.username }, async (err, found) => {
+
+router.post("/addstock",authenticate, async (req, res) => {
+    console.log(req.userid);  
+    User.findOne({ _id: req.userid }, async (err, found) => {
         if (err) {
             res.send({ "Status": 400 });
         } else {
@@ -26,10 +29,10 @@ router.post("/addstock", async (req, res) => {
         }
     })
 })
-router.post("/getallstocks", (req, res) => {
-    const username = req.body.username;
+router.post("/getallstocks",authenticate, (req, res) => {
+    // const username = req.body.username;
 
-    User.findOne({ username: username }, (err, found) => {
+    User.findOne({ _id: req.userid }, (err, found) => {
 
         if (err) {
             res.send({ "ispresent": null });
@@ -37,18 +40,39 @@ router.post("/getallstocks", (req, res) => {
             if (!found) {
                 res.send({ "ispresent": null });
             } else {
+                // companyStocks = []
+                // cryptoStocks = []
+
+                // (found.companyStocks.map((el) => {
+                //     if(el != req.userid) {
+                //         companyStocks.push(el);
+                //     }
+                // }))
+
+
+                // (found.cryptoStocks.map((el) => {
+                //     if(el != req.userid) {
+                //         cryptoStocks.push(el);
+                //     }
+                // }))
+                // console.log(req.userid); 
+                // companyStocks.filter((el)=> el != req.userid);
+                // cryptoStocks.filter((el)=> el != found._id);
+                // console.log(found.companyStocks); 
+                // console.log(found.cryptoStocks); 
+
                 res.send({ companyStocks: found.companyStocks, cryptoStocks: found.cryptoStocks });
             }
         }
     })
 })
-router.post("/deleteStock", (req, res) => {
+router.post("/deleteStock",authenticate, (req, res) => {
     const username = req.body.username;
     let obj = {
         type: (req.body.type),
         symbol: (req.body.symbol),
     }
-    User.findOne({ username: username }, (err, found) => {
+    User.findOne({ _id: req.userid }, (err, found) => {
         if (err) {
             res.send({ "Status": 401 });
             console.log("Some error occured!")

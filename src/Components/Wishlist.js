@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import WishlistCompanyStocks from './WishlistCompanyStocks';
 
 
-function Wishlist() {
+function Wishlist({ islogged }) {
     const { state, getstocks, dispatch } = useContext(StockContext);
     const [AllCryptoStocks, setAllCryptoStocks] = useState([])
     const [AllCompanyStocks, setAllCompanyStocks] = useState([])
@@ -79,7 +79,8 @@ function Wishlist() {
     // console.log(AllCompanyStocks); 
     const height = window.innerHeight;
     return (
-        <div className="wishlist" style={{ height: height, }}>
+    <>
+        {islogged && <div className="wishlist" style={{ height: height, }}>
             <Accordion expanded={companyexpand === 'panel1'} onChange={handlecompanychange('panel1')} style={{ margin: '25px' }}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
@@ -183,7 +184,15 @@ function Wishlist() {
             </Accordion>
 
             <div style={{ width: '100%', height: '100px' }}></div>
-        </div>
+        </div>}
+        { !islogged && 
+
+            <div style = {{fontSize:'30px', fontWeight:'bold', display:'flex', justifyContent:'center'}}>
+                Please Login to see your wishlist
+            </div>
+
+        }
+        </>
     )
 
 }

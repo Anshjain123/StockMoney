@@ -45,7 +45,7 @@ function Navbar(props) {
                                 </div>
                             </li>
                             <li className="nav-item me-1 my-1" style={{ alignSelf: 'center' }}>
-                                <Link className="nav-link active" style={{ color: "white" }} aria-current="page" to='/home'>Home</Link>
+                                <Link className="nav-link active" style={{ color: "white" }} aria-current="page" to='/'>Home</Link>
                             </li>
                             <li className="nav-item3 dropdown has-megamenu mx-1" style={{ alignSelf: 'center' }}>
 
@@ -56,11 +56,11 @@ function Navbar(props) {
                                             <b>Market</b>
                                         </button>
                                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                            <li><button className="dropdown-item" onClick={() => navigate("/home/companydata")} href="#"><b>Company Stocks</b></button></li>
-                                            <li><button className="dropdown-item my-3" onClick={() => navigate("./home/cryptodata")}><b>Crypto Data</b></button></li>
-                                            <li><button className="dropdown-item my-3" onClick={() => navigate("/home/topgainers")} href="#"><b>Top Gainers</b></button></li>
-                                            <li><button className="dropdown-item my-3" onClick={() => navigate('./home/toplosers')} href="#"><b>Top Losers</b></button></li>
-                                            <li><button className="dropdown-item my-3" onClick={() => navigate('./home/mostactive')} href="#"><b>Most Active</b></button></li>
+                                            <li><button className="dropdown-item" onClick={() => navigate("./companydata")} href="#"><b>Company Stocks</b></button></li>
+                                            <li><button className="dropdown-item my-3" onClick={() => navigate("./cryptodata")}><b>Crypto Data</b></button></li>
+                                            <li><button className="dropdown-item my-3" onClick={() => navigate("/topgainers")} href="#"><b>Top Gainers</b></button></li>
+                                            <li><button className="dropdown-item my-3" onClick={() => navigate('./toplosers')} href="#"><b>Top Losers</b></button></li>
+                                            <li><button className="dropdown-item my-3" onClick={() => navigate('./mostactive')} href="#"><b>Most Active</b></button></li>
 
                                         </ul>
                                     </div>
@@ -68,21 +68,21 @@ function Navbar(props) {
                             </li>
 
                             <li className="nav-item me-2 my-1" style={{ alignSelf: 'center' }}>
-                                <a className="nav-link" style={{ color: "white" }} onClick={() => navigate('./home/aboutus')} href="#">About Us</a>
+                                <a className="nav-link" style={{ color: "white" }} onClick={() => navigate('./aboutus')} href="#">About Us</a>
                             </li>
                             <div className="d-flex" style={{ alignSelf: 'center' }}>
-
-                                <div className="dropdown dropstart open">
+                                {props.islogged && <div className="dropdown dropstart open">
                                     <button type="button" className="btn dropdown-toggle" style={{ color: 'white', boxShadow: 'none', marginTop: '0px' }} data-bs-toggle="dropdown" aria-expanded="false">
                                         <b><img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" width={35} style={{ borderRadius: "25px", marginRight: '7px' }} /></b>
                                         <b>Me</b>
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-
-                                        <li><a className="dropdown-item" onClick={() => navigate("./home/wishlist")} href="#"><b>Watch List</b></a></li>
+                                        <li><a className="dropdown-item" onClick={() => navigate("./wishlist")} href="#"><b>Watch List</b></a></li>
                                         <li><a className="dropdown-item" onClick={Logoutclicked} href="#"><b>Logout</b></a></li>
                                     </ul>
-                                </div>
+                                </div>}
+
+                                {!props.islogged && <div onClick={()=>navigate("./login")} style = {{color:"white", cursor:"pointer"}}>Login/Signup</div>}
                             </div>
                         </ul>
                     </div>

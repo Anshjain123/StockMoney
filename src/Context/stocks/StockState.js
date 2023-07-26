@@ -3,14 +3,15 @@ import { useEffect } from 'react';
 import StockContext from './StockContext'
 
 const StockState = (props) => {
-  const [Stocks, setstocks] = useState([])
+  const [Stocks, setstocks] = useState([]);
+  const token = localStorage.getItem("token");
   const addstock = async (type, symbol) => {
-    console.log("Ansh Jain")
     const user = localStorage.getItem("user");
     const response = await fetch("http://localhost:5000/api/Stocks/addstock", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': token
       },
       body: JSON.stringify({ username: user, type: type, symbol: symbol })
     })
@@ -22,7 +23,8 @@ const StockState = (props) => {
     const response = await fetch("http://localhost:5000/api/Stocks/deleteStock", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': token
       },
       body: JSON.stringify({ username: user, type: type, symbol: symbol })
     })
@@ -72,15 +74,21 @@ const StockState = (props) => {
   }
   const getstocks = async () => {
     const user = localStorage.getItem('user');
-    const response = await fetch("http://localhost:5000/api/Stocks/getallstocks", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username: user })
-    })
-    const res = await response.json();
-    return res;
+    if (token) {
+      const response = await fetch("http://localhost:5000/api/Stocks/getallstocks", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
+        body: JSON.stringify({ username: user })
+      })
+      const res = await response.json();
+      return res;
+    } else {
+      return {};
+    }
+
   }
   let initialState = {
     companyStocks: [],

@@ -12,7 +12,6 @@ function LandingPage(props) {
     const width = window.innerWidth;
     return (
         <div>
-            <OceanEffect style={{ zIndex: -1 }} />
             <div style={{ display: 'flex', flexDirection: 'column', zIndex: 1, alignItems: 'center', width: width, height: height, justifyContent: 'space-evenly' }}>
 
                 <h1 className="Name" style={{ fontSize: '220px', color: 'rgb(19, 25, 33)', width: '100%', textAlign: 'center' }}>

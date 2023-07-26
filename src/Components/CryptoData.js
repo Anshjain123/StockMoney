@@ -4,7 +4,7 @@ import PrintCryptoData from './PrintCryptoData'
 import StockContext from '../Context/stocks/StockContext'
 import { Card } from '@mui/material'
 
-function CryptoData() {
+function CryptoData({ islogged }) {
   const { state, getstocks } = useContext(StockContext);
   const [query, setquery] = useState("");
   const [Data, setdata] = useState([]);
@@ -17,18 +17,18 @@ function CryptoData() {
       let res = await data.json();
       let newres = res.data.filter((curr) => curr.symbol !== "DOT");
       // setdata(res);  
-    
-      const arr = []; 
-      for(let i = 0; i < res.data.length; i++) {
-        if(res.data[i].symbol !== "DOT") {
-          arr.push(res.data[i]); 
+
+      const arr = [];
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].symbol !== "DOT") {
+          arr.push(res.data[i]);
         }
       }
-      setdata(arr); 
+      setdata(arr);
     }
     getData();
 
-    console.log(Data); 
+    console.log(Data);
   }, [])
   const height = window.innerHeight;
   return (
@@ -59,7 +59,7 @@ function CryptoData() {
 
           {Data.map((element, index) => {
             return <Card key={index} className="rrow" style={{ width: '1470px', height: '60px' }}>
-              <PrintCryptoData element={element} />
+              <PrintCryptoData islogged={islogged} element={element} />
             </Card>
           })}
 

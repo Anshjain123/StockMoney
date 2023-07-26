@@ -37,7 +37,9 @@ function App() {
   const [user, setuser] = useState(null);
   useEffect(async () => {
     const token = localStorage.getItem("token");
+    console.log(token);
     if (token) {
+      console.log("YES");
       const response = await fetch("http://localhost:5000/api/auth/getuser", {
         method: "GET",
         headers: {
@@ -46,11 +48,11 @@ function App() {
         }
       })
       const res = await response.json();
-      
+
       if (res != null) {
-        localStorage.setItem("user", res.user); 
+        localStorage.setItem("user", res.user);
         setislogged(true);
-        navigate("/home");
+        // navigate("/home");
       }
     }
 
@@ -58,19 +60,18 @@ function App() {
   return (
     <>
       <StockState>
-        {islogged && <Navbar setislogged={setislogged} setcategory={setcategory} />}
+        <Navbar setislogged={setislogged} setcategory={setcategory} islogged={islogged} />
         <Routes>
-          {!islogged && <Route exact path="/" element={<LandinPage setislogged={setislogged} />} />}
-          {!islogged && <Route exact path="/login" element={<Login setislogged={setislogged} />} />}
-          {!islogged && <Route exact path="/signup" element={<Signup setislogged={setislogged} />} />}
-          {islogged && <Route exact path='/home' element={<Home category={category} />} />}
-          {islogged && <Route exact path='/home/companydata' element={<CompanyData />} />}
-          {islogged && <Route exact path='/home/cryptodata' element={<CryptoData />} />}
-          {islogged && <Route exact path='/home/topgainers' element={<Topgainers />} />}
-          {islogged && <Route exact path='/home/toplosers' element={<TopLosers />} />}
-          {islogged && <Route exact path='/home/mostactive' element={<MostActive />} />}
-          {islogged && <Route exact path='/home/aboutus' element={<AboutUs />} />}
-          {islogged && <Route exact path='/home/wishlist' element={<Wishlist/>} />}
+          <Route exact path="/login" element={<Login setislogged={setislogged} />} />
+          <Route exact path="/signup" element={<Signup setislogged={setislogged} />} />
+          <Route exact path='/' element={<Home category={category} />} />
+          <Route exact path='/companydata' element={<CompanyData islogged={islogged} />} />
+          <Route exact path='/cryptodata' element={<CryptoData islogged={islogged} />} />
+          <Route exact path='/topgainers' element={<Topgainers />} />
+          <Route exact path='/toplosers' element={<TopLosers />} />
+          <Route exact path='/mostactive' element={<MostActive />} />
+          <Route exact path='/aboutus' element={<AboutUs />} />
+          <Route exact path='/wishlist' element={<Wishlist islogged={islogged} />} />
         </Routes>
       </StockState>
     </>

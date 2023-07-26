@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Zoom from 'react-reveal/Zoom';
 import Button from '@mui/material/Button';
 import toast, { Toaster } from 'react-hot-toast'
 import TextField from '@mui/material/TextField';
@@ -35,14 +34,13 @@ function Login(props) {
             toast.success("Logged in Successfully!!")
             props.setislogged(true);
 
-            navigate("/home");
+            navigate("/");
         }
 
     }
     const height = window.innerHeight;
     return (
         <>
-            <OceanEffect />
             <div className="login" style={{ height: height, backgroundColor: 'rgb(234, 237, 237)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
 
                 <Card style={{ padding: '60px', flex: 0.7, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>

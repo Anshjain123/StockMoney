@@ -32,7 +32,7 @@ function Signup({ setislogged }) {
 
             setislogged(true);
 
-            navigate("/home");
+            navigate("/");
         }
 
 
